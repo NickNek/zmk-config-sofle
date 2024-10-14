@@ -22,4 +22,3 @@ include:
     shield: sofle_own_left
   - board: nice_nano_v2
     shield: sofle_own_right
-  - board: nice_nano_v2
