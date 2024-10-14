@@ -1,7 +1,7 @@
 #include <physical_layouts.dtsi>
 
 / {
-    josefadamcik_sofle_layout: josefadamcik_sofle_layout {
+    josefadamcik_sofle_own_layout: josefadamcik_sofle_own_layout {
         compatible = "zmk,physical-layout";
         display-name = "Sofle";
 
