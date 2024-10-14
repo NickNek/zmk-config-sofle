@@ -6,10 +6,6 @@
 
 #include <dt-bindings/zmk/matrix_transform.h>
 
-&josefadamcik_sofle_own_layout {
-    transform = <&default_transform>;
-};
-
 / {
     chosen {
         zephyr,display = &oled;
