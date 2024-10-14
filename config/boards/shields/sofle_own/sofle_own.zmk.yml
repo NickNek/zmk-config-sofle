@@ -1,0 +1,15 @@
+file_format: "1"
+id: sofle_own
+name: sofle_own
+type: shield
+url: https://github.com/josefadamcik/sofle_ownKeyboard
+requires: [pro_micro]
+exposes: [i2c_oled]
+features:
+  - keys
+  - display
+  - encoder
+  - underglow
+siblings:
+  - sofle_own_left
+  - sofle_own_right
