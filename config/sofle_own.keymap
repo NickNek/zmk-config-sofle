@@ -16,6 +16,8 @@
 #include "zmk-helpers/key-labels/sofle.h"
 // Source unicode-chars for desired languages
 #include "zmk-helpers/unicode-chars/german.dtsi"
+// Source unicode-chars for currency
+#include "zmk-helpers/unicode-chars/currency.dtsi"
 
 #define BASE 0
 #define SYMBOLS 1
@@ -66,7 +68,7 @@
 //               |     |      |      |      |        |  |       |      |       |       |      |
             bindings = <
 &trans    &kp F1    &kp F2    &kp F3      &kp F4    &kp F5                    &kp F6    &kp F7   &kp F8    &kp F9    &kp F10   &kp F11
-&trans    &none     &none     &none       &none     &none                     &€        &kp LBKT &kp RBKT  &de_ue    &kp EXCL  &kp F12
+&trans    &none     &none     &none       &none     &none                    &curr_euro &kp LBKT &kp RBKT  &de_ue    &kp EXCL  &kp F12
 &trans    &de_ae    &none     &de_eszett  &none     &none                     &kp DLLR  &kp LPAR &kp RPAR  &none     &de_oe    &trans
 &trans    &none     &none     &none       &none     &none      &trans &trans  &kp PRCNT &kp LBRC &kp RBRC  &kp QMARK &kp BSLH  &trans
                     &trans    &trans      &trans    &trans     &trans &trans  &trans    &trans   &kp PIPE  &kp AMPS
