@@ -137,7 +137,7 @@
         ue_UE: ue_UE {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&ue>, <&_AE>, ;
+            bindings = <&ue>, <&_AE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
