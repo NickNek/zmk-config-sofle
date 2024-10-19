@@ -4,7 +4,7 @@
 if SHIELD_sofle_own_LEFT
 
 config ZMK_KEYBOARD_NAME
-    default "sofle_own"
+    default "SofleKB"
 
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
