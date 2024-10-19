@@ -62,7 +62,7 @@
                 , <&macro_release &kp LALT>
                 ;
         };
-        AE: AE {
+        _AE: _AE {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <10>;
@@ -73,7 +73,7 @@
                 , <&macro_release &kp LALT>
                 ;
         };
-        OE: OE {
+        _OE: _OE {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <10>;
@@ -84,7 +84,7 @@
                 , <&macro_release &kp LALT>
                 ;
         };
-        UE: UE {
+        _UE: _UE {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <10>;
@@ -125,19 +125,19 @@
         ae_AE: ae_AE {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&ae>, <&AE>;
+            bindings = <&ae>, <&_AE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
         oe_OE: oe_OE {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&oe>, <&OE>;
+            bindings = <&oe>, <&_OE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
         ue_UE: ue_UE {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&ue>, <&UE>;
+            bindings = <&ue>, <&_UE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
