@@ -187,8 +187,8 @@
 //               |     |      |      |      |        |  |       |      |       |       |      |
             bindings = <
 &trans    &kp F1    &kp F2    &kp F3      &kp F4    &kp F5                    &kp F6    &kp F7   &kp F8    &kp F9    &kp F10   &kp F11
-&trans    &_AE      &none     &none       &none     &none                     &euro     &kp LBKT &kp RBKT  &ue       &kp EXCL  &kp F12
-&trans    &ae       &none     &ss         &none     &none                     &kp DLLR  &kp LPAR &kp RPAR  &none     &oe       &trans
+&trans    &none     &none     &none       &none     &none                     &euro     &kp LBKT &kp RBKT  &ue_UE    &kp EXCL  &kp F12
+&trans    &ae_AE    &none     &ss         &none     &none                     &kp DLLR  &kp LPAR &kp RPAR  &none     &oe_OE    &trans
 &trans    &none     &none     &none       &none     &none      &trans &trans  &kp PRCNT &kp LBRC &kp RBRC  &kp QMARK &kp BSLH  &trans
                     &trans    &trans      &trans    &trans     &trans &trans  &trans    &trans   &kp PIPE  &kp AMPS
             >;
