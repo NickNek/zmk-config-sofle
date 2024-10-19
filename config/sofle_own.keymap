@@ -120,6 +120,8 @@
     };
 };
 
+#define MO_TOG(layer_mo, layer_tog) &mo_tog layer_mo layer_tog
+
 / {
     behaviors {
         ae_AE: ae_AE {
@@ -137,22 +139,20 @@
         ue_UE: ue_UE {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&ue>, <&_AE>;
+            bindings = <&ue>, <&_UE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        mo_tog: behavior_mo_tog {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&tog>;
         };
     };
 };
 
 / {
-
-   // Activate ADJUST layer by pressing raise and lower
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        adjust_layer {
-            if-layers = <SYMBOLS NUMPAD>;
-            then-layer = <MOVEMENT>;
-        };
-    };
 
     keymap {
         compatible = "zmk,keymap";
@@ -164,13 +164,13 @@
 // |  TAB  |  Q  |  W  |  F   |  P   |  B   |                   |  J   |  L    |  U    |  Y   |   ;   |       |
 // |       |  A  |  R  |  S   |  T   |  G   |                   |  M   |  N    |  E    |  I   |   O   | BKSPC |
 // | LCTRL |  X  |  C  |  D   |  V   |  Z   |        |  |       |  K   |  N    |  ,    |  .   |   /   |  DEL  |
-//               | GUI | ALT  |SYMBLS| LSHFT|  SPACE |  | RET   |RSHFT | NUMS  |  =    |  -   |
+//               | GUI | ALT  |SYMBLS| LSHFT|  SPACE |  | RET*  |RSHFT | NUMS* |  =    |  -   |
             bindings = <
 &kp ESC   &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                            &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &none
 &kp TAB   &kp Q  &kp W    &kp F    &kp P     &kp B                             &kp J  &kp L     &kp U     &kp Y    &kp SEMI &none
 &none     &kp A  &kp R    &kp S    &kp T     &kp G                             &kp M  &kp N     &kp E     &kp I    &kp O    &kp BSPC
 &kp LCTRL &kp X  &kp C    &kp D    &kp V     &kp Z       &none      &none      &kp K  &kp H     &kp COMMA &kp DOT  &kp FSLH &kp DEL
-                 &kp LGUI &kp LALT &mo SYMBOLS &kp LSHFT &kp SPACE  &kp RET    &kp RSHFT &mo NUMPAD &kp EQUAL &kp MINUS
+                 &kp LGUI &kp LALT &mo SYMBOLS &kp LSHFT &kp SPACE  &lt MOVEMENT RET  &kp RSHFT MO_TOG(MOVEMENT,NUMPAD) &kp EQUAL &kp MINUS
             >;
 
             sensor-bindings = <&inc_dec_kp LEFT RIGHT &inc_dec_kp UP DOWN>;
@@ -209,7 +209,7 @@
 &none             &none           &none           &none           &none           &none                                   &none &kp N4 &kp N5    &kp N6      &kp HASH         &none
 &none             &none           &none           &none           &none           &none                                   &none &kp N1 &kp N2    &kp N3      &none            &none
 &none             &none           &none           &none           &none           &none            &none           &none  &none &kp N0 &kp SQT   &kp DQT     &kp KP_MULTIPLY  &none
-                                  &none           &none           &none           &none            &none           &none  &none &none  &kp GRAVE &kp KP_PLUS
+                                  &none           &none           &none           &none            &none           &none  &none &trans &kp GRAVE &kp KP_PLUS
             >;
 
             sensor-bindings = <&inc_dec_kp LEFT RIGHT &inc_dec_kp UP DOWN>;
