@@ -69,7 +69,7 @@
             tap-ms = <40>;
             bindings
                 = <&macro_press   &kp LALT>
-                , <&macro_tap     &kp KP_N0 &kp KP_N1 &kp KP_N4 &kp KP_N2>
+                , <&macro_tap     &kp KP_N1 &kp KP_N4 &kp KP_N2>
                 , <&macro_release &kp LALT>
                 ;
         };
@@ -80,7 +80,7 @@
             tap-ms = <40>;
             bindings
                 = <&macro_press   &kp LALT>
-                , <&macro_tap     &kp KP_N0 &kp KP_N1 &kp KP_N5 &kp KP_N3>
+                , <&macro_tap     &kp KP_N1 &kp KP_N5 &kp KP_N3>
                 , <&macro_release &kp LALT>
                 ;
         };
@@ -91,7 +91,7 @@
             tap-ms = <40>;
             bindings
                 = <&macro_press   &kp LALT>
-                , <&macro_tap     &kp KP_N0 &kp KP_N1 &kp KP_N5 &kp KP_N4>
+                , <&macro_tap     &kp KP_N1 &kp KP_N5 &kp KP_N4>
                 , <&macro_release &kp LALT>
                 ;
         };
@@ -125,19 +125,19 @@
         ae_AE: ae_AE {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&ae>, <&_AE>;
+            bindings = <&_AE>, <&ae>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
         oe_OE: oe_OE {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&oe>, <&_OE>;
+            bindings = <&_OE>, <&oe>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
         ue_UE: ue_UE {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&ue>, <&_UE>;
+            bindings = <&_UE>, <&ue>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
