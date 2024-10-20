@@ -191,14 +191,14 @@
 / {
     combos {
         compatible = "zmk,combos";
-        combo_lt { key-positions = < 7  8>; bindings = <&kp LT>;    timeout-ms = <50>; layers = <0>;};
-        combo_lt { key-positions = < 8  9>; bindings = <&kp GT>;    timeout-ms = <50>; layers = <0>;};
-        combo_lt { key-positions = <19 20>; bindings = <&kp LBKT>;  timeout-ms = <50>; layers = <0>;};
-        combo_lt { key-positions = <20 21>; bindings = <&kp RBKT>;  timeout-ms = <50>; layers = <0>;};
-        combo_lt { key-positions = <31 32>; bindings = <&kp LPAR>;  timeout-ms = <50>; layers = <0>;};
-        combo_lt { key-positions = <32 33>; bindings = <&kp RPAR>;  timeout-ms = <50>; layers = <0>;};
-        combo_lt { key-positions = <44 45>; bindings = <&kp LBRC>;  timeout-ms = <50>; layers = <0>;};
-        combo_lt { key-positions = <45 46>; bindings = <&kp RBRC>;  timeout-ms = <50>; layers = <0>;};
+        combo0 { key-positions = < 7  8>; bindings = <&kp LT>;    timeout-ms = <50>; layers = <0>;};
+        combo1 { key-positions = < 8  9>; bindings = <&kp GT>;    timeout-ms = <50>; layers = <0>;};
+        combo2 { key-positions = <19 20>; bindings = <&kp LBKT>;  timeout-ms = <50>; layers = <0>;};
+        combo3 { key-positions = <20 21>; bindings = <&kp RBKT>;  timeout-ms = <50>; layers = <0>;};
+        combo4 { key-positions = <31 32>; bindings = <&kp LPAR>;  timeout-ms = <50>; layers = <0>;};
+        combo5 { key-positions = <32 33>; bindings = <&kp RPAR>;  timeout-ms = <50>; layers = <0>;};
+        combo6 { key-positions = <44 45>; bindings = <&kp LBRC>;  timeout-ms = <50>; layers = <0>;};
+        combo7 { key-positions = <45 46>; bindings = <&kp RBRC>;  timeout-ms = <50>; layers = <0>;};
     }
 }
     
