@@ -199,8 +199,8 @@
         combo5 { key-positions = <32 33>; bindings = <&kp RPAR>;  timeout-ms = <50>; layers = <0>;};
         combo6 { key-positions = <44 45>; bindings = <&kp LBRC>;  timeout-ms = <50>; layers = <0>;};
         combo7 { key-positions = <45 46>; bindings = <&kp RBRC>;  timeout-ms = <50>; layers = <0>;};
-    }
-}
+    };
+};
     
 / {
 
