@@ -149,9 +149,59 @@
             tapping-term-ms = <200>;
             bindings = <&mo>, <&tog>;
         };
+        comma_semi: comma_semi {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp COMMA>, <&kp SEMI>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        dot_colon: dot_colon {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DOT>, <&kp COLON>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        fslh_bslh: fslh_bslh {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp FSLH>, <&kp BSLH>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        qmark_excl: qmark_excl {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp QMARK>, <&kp EXCL>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        sqt_dqt: sqt_dqt {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp SQT>, <&kp DQT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        minus_under: minus_under {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp MINUS>, <&kp UNDER>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
     };
 };
 
+/ {
+    combos {
+        compatible = "zmk,combos";
+        combo_lt { key-positions = < 7  8>; bindings = <&kp LT>;    timeout-ms = <50>; layers = <0>;};
+        combo_lt { key-positions = < 8  9>; bindings = <&kp GT>;    timeout-ms = <50>; layers = <0>;};
+        combo_lt { key-positions = <19 20>; bindings = <&kp LBKT>;  timeout-ms = <50>; layers = <0>;};
+        combo_lt { key-positions = <20 21>; bindings = <&kp RBKT>;  timeout-ms = <50>; layers = <0>;};
+        combo_lt { key-positions = <31 32>; bindings = <&kp LPAR>;  timeout-ms = <50>; layers = <0>;};
+        combo_lt { key-positions = <32 33>; bindings = <&kp RPAR>;  timeout-ms = <50>; layers = <0>;};
+        combo_lt { key-positions = <44 45>; bindings = <&kp LBRC>;  timeout-ms = <50>; layers = <0>;};
+        combo_lt { key-positions = <45 46>; bindings = <&kp RBRC>;  timeout-ms = <50>; layers = <0>;};
+    }
+}
+    
 / {
 
     keymap {
@@ -160,16 +210,16 @@
         default_layer {
             display-name = "default";
 // ------------------------------------------------------------------------------------------------------------
-// |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |       |
-// |  TAB  |  Q  |  W  |  F   |  P   |  B   |                   |  J   |  L    |  U    |  Y   |   ;   |       |
+// |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   | //\   |
+// |  TAB  |  Q  |  W  |  F   |  P   |  B   |                   |  J   |  L    |  U    |  Y   |   ?/! | '/"   |
 // |       |  A  |  R  |  S   |  T   |  G   |                   |  M   |  N    |  E    |  I   |   O   | BKSPC |
-// | LCTRL |  X  |  C  |  D   |  V   |  Z   |        |  |       |  K   |  N    |  ,    |  .   |   /   |  DEL  |
+// | LCTRL |  X  |  C  |  D   |  V   |  Z   |  PRINT |  | BREAK |  K   |  N    |  ,/;  |  ./: |   -/_ |  DEL  |
 //               | GUI | ALT  |SYMBLS| LSHFT|  SPACE |  | RET*  |RSHFT | NUMS* |  =    |  -   |
             bindings = <
-&kp ESC   &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                            &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &none
-&kp TAB   &kp Q  &kp W    &kp F    &kp P     &kp B                             &kp J  &kp L     &kp U     &kp Y    &kp SEMI &none
+&kp ESC   &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                            &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &fslh_bslh
+&kp TAB   &kp Q  &kp W    &kp F    &kp P     &kp B                             &kp J  &kp L     &kp U     &kp Y    &qmark_excl &sqt_dqt
 &none     &kp A  &kp R    &kp S    &kp T     &kp G                             &kp M  &kp N     &kp E     &kp I    &kp O    &kp BSPC
-&kp LCTRL &kp X  &kp C    &kp D    &kp V     &kp Z       &none      &none      &kp K  &kp H     &kp COMMA &kp DOT  &kp FSLH &kp DEL
+&kp LCTRL &kp X  &kp C    &kp D    &kp V     &kp Z       &kp PSCRN  &kp PAUSE_BREAK &kp K  &kp H &comma_semi &dot_colon  &minus_under &kp DEL
                  &kp LGUI &kp LALT &mo SYMBOLS &kp LSHFT &kp SPACE  &lt MOVEMENT RET  &kp RSHFT MO_TOG(MOVEMENT,NUMPAD) &kp EQUAL &kp MINUS
             >;
 
@@ -183,7 +233,7 @@
 // |       |  F1 |  F2 |  F3  |  F4  |  F5  |                   |  F6  |  F7   |  F8   |  F9  |  F10  |  F11  |
 // |       |     |     |      |      |      |                   |  €   |  [    |  ]    |  ü   |   !   |  F12  |
 // |       |  ä  |     |  ß   |      |      |                   |  $   |  (    |  )    |      |   ö   |   |   |
-// |       |     |     |      |      |      |        |  |       |  [   |  ]    |  ;    |  :   |   \   |       |
+// |       |     |     |      |      |      |        |  |       |  %   |  {    |  }    |  ?   |   \   |       |
 //               |     |      |      |      |        |  |       |      |       |       |      |
             bindings = <
 &trans    &kp F1    &kp F2    &kp F3      &kp F4    &kp F5                    &kp F6    &kp F7   &kp F8    &kp F9    &kp F10   &kp F11
