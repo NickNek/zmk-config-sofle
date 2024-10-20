@@ -15,6 +15,7 @@
 #define SYMBOLS 1
 #define NUMPAD 2
 #define MOVEMENT 3
+#define FUNC 4
 
 / {
     macros {
@@ -185,6 +186,18 @@
             bindings = <&kp MINUS>, <&kp UNDER>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+        equal_hash: equal_hash {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp EQUAL>, <&kp HASH>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        plus_mult: plus_mult {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_PLUS>, <&kp KP_MULTIPLY>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
     };
 };
 
@@ -214,14 +227,14 @@
 // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   | //\   |
 // |  TAB  |  Q  |  W  |  F   |  P   |  B   |                   |  J   |  L    |  U    |  Y   |   ?/! | '/"   |
 // |       |  A  |  R  |  S   |  T   |  G   |                   |  M   |  N    |  E    |  I   |   O   | BKSPC |
-// | LCTRL |  X  |  C  |  D   |  V   |  Z   |  PRINT |  | BREAK |  K   |  N    |  ,/;  |  ./: |   -/_ |  DEL  |
-//               | GUI | ALT  |SYMBLS| LSHFT|  SPACE |  | RET*  |RSHFT | NUMS* |  =    |  -   |
+// | LCTRL |  Z  |  X  |  C   |  D   |  V   |  PRINT |  | BREAK |  K   |  N    |  ,/;  |  ./: |   -/_ |  DEL  |
+//               | GUI | ALT  |SYMBLS| LSHFT|  SPACE |  | RET*  |RSHFT | NUMS* |  =/#  |  +/* |
             bindings = <
 &kp ESC   &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                            &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &fslh_bslh
 &kp TAB   &kp Q  &kp W    &kp F    &kp P     &kp B                             &kp J  &kp L     &kp U     &kp Y    &qmark_excl &sqt_dqt
 &none     &kp A  &kp R    &kp S    &kp T     &kp G                             &kp M  &kp N     &kp E     &kp I    &kp O    &kp BSPC
-&kp LCTRL &kp X  &kp C    &kp D    &kp V     &kp Z       &kp PSCRN  &kp PAUSE_BREAK &kp K  &kp H &comma_semi &dot_colon  &minus_under &kp DEL
-                 &kp LGUI &kp LALT &mo SYMBOLS &kp LSHFT &kp SPACE  &lt MOVEMENT RET  &kp RSHFT MO_TOG(MOVEMENT,NUMPAD) &kp EQUAL &kp MINUS
+&kp LCTRL &kp Z  &kp X    &kp C    &kp D     &kp V       &kp PSCRN  &kp PAUSE_BREAK &kp K  &kp H &comma_semi &dot_colon  &minus_under &kp DEL
+                 &kp LGUI &kp LALT &mo SYMBOLS &kp LSHFT &kp SPACE  &lt MOVEMENT RET  &kp RSHFT MO_TOG(FUNC,NUMPAD) &equal_hash &kp plus_mult
             >;
 
             sensor-bindings = <&inc_dec_kp LEFT RIGHT &inc_dec_kp UP DOWN>;
