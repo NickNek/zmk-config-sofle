@@ -394,7 +394,7 @@
 // |    t   |    ‰    |     ×   |    &    |     |   |    ~    |   t  | |   t  |      |  F1  |  F2   |  F3  |       |       |
 //                    |     t   |    t    |     t   |    t    |   t  | |   t  |   t  |   t  |       |      |
             bindings = <
-&trans   &avg     &curr_euro &kp DLLR &_OE   &_UE                         &none   &kp F10  &kp F11   &kp F12  &none  &trans
+&trans   &avg     &euro    &kp DLLR &_OE   &_UE                         &none   &kp F10  &kp F11   &kp F12  &none  &trans
 &trans   &kp AT   &deg     &tick    &btick   &kp CARET                     &none   &kp F7   &kp F8    &kp F9   &none  &trans
 &trans   &kp PRCNT &ae_AE  &oe_OE   &ue_UE   &ss                           &none   &kp F4   &kp F5    &kp F6   &none  &trans
 &trans   &prmll   &mult    &kp AMPS &kp PIPE &kp TILDE  &trans    &trans   &none   &kp F1   &kp F2    &kp F3   &none  &trans
