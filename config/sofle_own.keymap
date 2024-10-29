@@ -84,7 +84,7 @@
             tap-ms = <TAP_MS>;
             bindings
                 = <&macro_press   &kp LALT>
-                , <&macro_tap     &kp KP_N0 &kp KP_N2 &kp KP_N1 &kp KP_N4>
+                , <&macro_tap     &kp KP_N0 &kp KP_N1 &kp KP_N5 &kp KP_N3>
                 , <&macro_release &kp LALT>
                 ;
         };
@@ -110,7 +110,7 @@
                 , <&macro_release &kp LALT>
                 ;
         };
-        deg: deg {
+        avg: avg {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <WAIT_MS>;
@@ -121,6 +121,39 @@
                 , <&macro_release &kp LALT>
                 ;
         };
+        prmll: prmll {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LALT>
+                , <&macro_tap     &kp KP_N0 &kp KP_N1 &kp KP_N3 &kp KP_N7>
+                , <&macro_release &kp LALT>
+                ;
+        };
+        mult: mult {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LALT>
+                , <&macro_tap     &kp KP_N0 &kp KP_N2 &kp KP_N1 &kp KP_N5>
+                , <&macro_release &kp LALT>
+                ;
+        };
+        deg: deg {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LALT>
+                , <&macro_tap     &kp KP_N0 &kp KP_N1 &kp KP_N7 &kp KP_N6>
+                , <&macro_release &kp LALT>
+                ;
+        };
         tick: tick {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -128,7 +161,7 @@
             tap-ms = <TAP_MS>;
             bindings
                 = <&macro_press   &kp LALT>
-                , <&macro_tap     &kp KP_N0 &kp KP_N1 &kp KP_N8 &kp KP_N0>
+                , <&macro_tap     &kp KP_N0 &kp KP_N1 &kp KP_N4 &kp KP_N6>
                 , <&macro_release &kp LALT>
                 ;
         };
@@ -139,7 +172,7 @@
             tap-ms = <TAP_MS>;
             bindings
                 = <&macro_press   &kp LALT>
-                , <&macro_tap     &kp KP_N0 &kp KP_N0 &kp KP_N9 &kp KP_N6>
+                , <&macro_tap     &kp KP_N0 &kp KP_N1 &kp KP_N4 &kp KP_N5>
                 , <&macro_release &kp LALT>
                 ;
         };
@@ -267,6 +300,12 @@
             bindings = <&kp KP_PLUS>, <&kp KP_MULTIPLY>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+        dot_comma: dot_comma {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DOT>, <&kp KP_COMMA>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
     };
 };
 
@@ -331,17 +370,17 @@
         numpad_layer {
             display-name = "numpad";
 // -------------------------------------------------------------------------------------------------------------------------
-// |    t   |         |         |         |         |         |               |      |   7  |   8   |  9   |   /   |   t   |
-// |    t   |         |         |         |         |         |               |      |   4  |   5   |  6   |   *   |   t   |
-// |    t   |   WIN   |   ALT   |   CTRL  |  SHIFT  |         |               |      |   1  |   2   |  3   |   +   |   t   |
-// |    t   |   UNDO  |   CUT   |   COPY  |  PASTE  |  PASTE  |   t  | |  t   |      |   ,  |   0   |  .   |   -   |   t   |
-//               t    |    t    |     t   |    t    |    t    |   t  | |  t   |   t  |   t  |       |      |
+// |    t   |         |         |         |         |         |               |      |      |       |      |   /   |   t   |
+// |    t   |         |         |         |         |         |               |      |   7  |   8   |  9   |   *   |   t   |
+// |    t   |   WIN   |   ALT   |   CTRL  |  SHIFT  |         |               |      |   4  |   5   |  6   |   +   |   t   |
+// |    t   |   UNDO  |   CUT   |   COPY  |  PASTE  |  PASTE  |   t  | |  t   |      |   1  |   2   |  3   |   -   |   t   |
+//               t    |    t    |     t   |    t    |    t    |   t  | |  t   |   t  |   t  |   0   |  ./, |
             bindings = <
-&trans   &none    &none    &none    &none    &none                         &none  &kp N7  &kp N8    &kp N9   &kp FSLH        &trans
-&trans   &none    &none    &none    &none    &none                         &none  &kp N4  &kp N5    &kp N6   &kp KP_MULTIPLY &trans
-&trans   &kp K_CMENU &kp LALT  &kp LCTRL  &kp LSHFT   &none                &none  &kp N1  &kp N2    &kp N3   &kp KP_PLUS     &trans
-&trans   &kp K_UNDO  &kp K_CUT &kp K_COPY &kp K_PASTE &kp K_PASTE &trans &trans &none &kp COMMA &kp N0 &kp DOT  &kp MINUS    &trans
-                  &trans   &trans   &trans   &trans     &trans    &trans   &trans &trans  &none &none 
+&trans   &none    &none    &none    &none    &none                         &none      &none     &none     &none     &kp FSLH        &trans
+&trans   &none    &none    &none    &none    &none                         &none      &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_MULTIPLY &trans
+&trans   &kp K_CMENU &kp LALT  &kp LCTRL  &kp LSHFT   &none                &none      &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_PLUS     &trans
+&trans   &kp K_UNDO  &kp K_CUT &kp K_COPY &kp K_PASTE &kp K_PASTE &trans &trans &none &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp MINUS       &trans
+                  &trans   &trans   &trans   &trans     &trans    &trans   &trans &trans  &kp KP_N0 &dot_comma
             >;
             sensor-bindings = <&inc_dec_kp UP DOWN &inc_dec_kp LEFT RIGHT>;
         };
@@ -349,17 +388,17 @@
         symbol_layer {
             display-name = "symbols";
 // -------------------------------------------------------------------------------------------------------------------------
-// |    t   |         |         |         |         |         |               |      |      |       |      |       |       |
-// |    t   |    @    |     °   |    Ö    |     `   |    ^    |               | F12  |  F7  |  F8   |  F9  |       |       |
-// |    t   |    %    |     ä   |    ö    |     ü   |    ß    |               | F11  |  F4  |  F5   |  F6  |       |       |
-// |    t   |    €    |     $   |    &    |     |   |    ~    |   t  | |   t  | F10  |  F1  |  F2   |  F3  |       |       |
+// |    t   |    ø    |     €   |    $    |         |         |               |      |  F10 |  F11  |  F12 |       |       |
+// |    t   |    @    |     °   |    ´    |     `   |    ^    |               |      |  F7  |  F8   |  F9  |       |       |
+// |    t   |    %    |     ä   |    ö    |     ü   |    ß    |               |      |  F4  |  F5   |  F6  |       |       |
+// |    t   |    ‰    |     ×   |    &    |     |   |    ~    |   t  | |   t  |      |  F1  |  F2   |  F3  |       |       |
 //                    |     t   |    t    |     t   |    t    |   t  | |   t  |   t  |   t  |       |      |
             bindings = <
-&trans   &none    &_AE     &_OE     &_UE     &none                         &none   &none   &none     &none    &none  &trans
-&trans   &kp AT   &deg     &_OE     &btick   &kp CARET                     &kp F12 &kp F7  &kp F8    &kp F9   &none  &trans
-&trans   &kp PRCNT &ae_AE  &oe_OE   &ue_UE   &ss                         &kp F11 &kp F4  &kp F5    &kp F6   &none  &trans
-&trans   &euro    &kp DLLR &kp AMPS &kp PIPE &kp TILDE  &trans    &trans   &kp F10 &kp F1  &kp F2    &kp F3   &none  &trans
-                  &trans   &trans   &trans   &trans     &trans    &trans   &trans  &trans  &none     &none 
+&trans   &avg     &curr_euro &kp DLLR &_OE   &_UE                         &none   &kp F10  &kp F11   &kp F12  &none  &trans
+&trans   &kp AT   &deg     &tick    &btick   &kp CARET                     &none   &kp F7   &kp F8    &kp F9   &none  &trans
+&trans   &kp PRCNT &ae_AE  &oe_OE   &ue_UE   &ss                           &none   &kp F4   &kp F5    &kp F6   &none  &trans
+&trans   &prmll   &mult    &kp AMPS &kp PIPE &kp TILDE  &trans    &trans   &none   &kp F1   &kp F2    &kp F3   &none  &trans
+                  &trans   &trans   &trans   &trans     &trans    &trans   &trans  &trans   &none     &none 
             >;
             sensor-bindings = <&inc_dec_kp UP DOWN &inc_dec_kp LEFT RIGHT>;
         };
