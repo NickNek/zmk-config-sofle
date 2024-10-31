@@ -335,6 +335,22 @@
             bindings = <&undo>, <&redo>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+        up_pgup: up_pgup {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp UP>, <&kp PG_UP>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+        down_pgdown: down_pgdown {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DOWN>, <&kp PG_DN>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+        inc_dec_up_down: inc_dec_up_down {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&down_pgdown>, <&up_pgup>;
     };
 };
 
@@ -375,7 +391,7 @@
 &kp LCTRL &kp Z  &kp X    &kp C    &kp D     &kp V       &kp PSCRN  &mt RCTRL PAUSE_BREAK &kp K &kp H &comma_semi &dot_colon &minus_under &kp DEL
                  &kp LGUI &kp LALT &mo SYMBOLS &kp LSHFT &kp SPACE  &lt MOVEMENT RET  &kp RSHFT MO_TOG(NUMERIC,NUMPAD) &equal_hash &plus_mult
             >;
-            sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
+            sensor-bindings = <&inc_dec_up_down &inc_dec_kp RIGHT LEFT>;
         };
 
         movement_layer {
