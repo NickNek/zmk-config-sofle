@@ -12,11 +12,12 @@
 #include <dt-bindings/zmk/ext_power.h>
 
 #define BASE 0
-#define MOVEMENT 1
-#define NUMERIC 2
-#define NUMPAD 3
-#define SYMBOLS 4
-#define SERVICE 5
+#define DOWNUP 1
+#define MOVEMENT 2
+#define NUMERIC 3
+#define NUMPAD 4
+#define SYMBOLS 5
+#define SERVICE 6
 
 #define WAIT_MS 10
 #define TAP_MS 10
@@ -243,6 +244,42 @@
                 , <&macro_release &kp LCTRL>
                 ;
         };
+        up10: up10 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_tap     &kp UP>
+                , <&macro_tap     &kp UP>
+                , <&macro_tap     &kp UP>
+                , <&macro_tap     &kp UP>
+                , <&macro_tap     &kp UP>
+                , <&macro_tap     &kp UP>
+                , <&macro_tap     &kp UP>
+                , <&macro_tap     &kp UP>
+                , <&macro_tap     &kp UP>
+                , <&macro_tap     &kp UP>
+                ;
+        };
+        down10: down10 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_tap     &kp DOWN>
+                , <&macro_tap     &kp DOWN>
+                , <&macro_tap     &kp DOWN>
+                , <&macro_tap     &kp DOWN>
+                , <&macro_tap     &kp DOWN>
+                , <&macro_tap     &kp DOWN>
+                , <&macro_tap     &kp DOWN>
+                , <&macro_tap     &kp DOWN>
+                , <&macro_tap     &kp DOWN>
+                , <&macro_tap     &kp DOWN>
+                ;
+        };
     };
 };
 
@@ -335,23 +372,11 @@
             bindings = <&undo>, <&redo>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-        up_pgup: up_pgup {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp UP>, <&kp PG_UP>;
-            mods = <(MOD_RGUI)>;
-        };
-        down_pgdown: down_pgdown {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp DOWN>, <&kp PG_DN>;
-            mods = <(MOD_RGUI)>;
-        };
-        inc_dec_up_down: inc_dec_up_down {
+        inc_dec_down_up: inc_dec_down_up {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
-            bindings = <&up_pgup>, <&down_pgdown>;
-        };
+            bindings = <&down_pgdown>, <&up_pgup>;
+        };   
     };
 };
 
@@ -389,10 +414,28 @@
 &kp ESC   &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                            &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &fslh_bslh
 &kp TAB   &kp Q  &kp W    &kp F    &kp P     &kp B                             &kp J  &kp L     &kp U     &kp Y    &qmark_excl &sqt_dqt
 &kp PAUSE_BREAK &kp A  &kp R    &kp S    &kp T     &kp G                             &kp M  &kp N     &kp E     &kp I    &kp O    &kp BSPC
-&kp LCTRL &kp Z  &kp X    &kp C    &kp D     &kp V       &mt RGUI PSCRN  &mt RCTRL K_CMENU &kp K &kp H &comma_semi &dot_colon &minus_under &kp DEL
+&kp LCTRL &kp Z  &kp X    &kp C    &kp D     &kp V       &lt DOWNUP K_CMENU &mt RCTRL PSCRN &kp K &kp H &comma_semi &dot_colon &minus_under &kp DEL
                  &kp LGUI &kp LALT &mo SYMBOLS &kp LSHFT &kp SPACE  &lt MOVEMENT RET  &kp RSHFT MO_TOG(NUMERIC,NUMPAD) &equal_hash &plus_mult
             >;
-            sensor-bindings = <&inc_dec_up_down &inc_dec_kp RIGHT LEFT>;
+            sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
+        };
+
+        movement_layer {
+            display-name = "down_up";
+// ------------------------------------------------------------------------------------------------------------
+// |      |      |      |       |       |      |                |      |      |       |      |       |       |
+// |      |      |      |       |       |      |                |      |      |       |      |       |       |
+// |      |      |      |       |       |      |                |      |      |       |      |       |       |
+// |      |      |      |       |       |      |                |      |      |       |      |       |       |
+//               |      |       |       |      |      |  |      |      |      |       |      |
+            bindings = <
+&trans     &none        &none        &none        &none        &none                         &none     &none     &none    &none     &none   &none
+&none      &none        &none        &none        &none        &none                         &none     &none     &none    &none     &none   &none
+&none      &none        &none        &none        &none        &none                         &none     &none     &none    &none     &none   &none
+&trans     &none        &none        &none        &none        &none    &trans     &trans    &none     &none     &none    &none     &none   &none
+                        &trans       &trans       &none        &trans   &none      &none     &trans    &none     &none    &none
+            >;
+            sensor-bindings = <&inc_dec_down_up &inc_dec_kp RIGHT LEFT>;
         };
 
         movement_layer {
@@ -410,7 +453,7 @@
 &trans     &undo_redo   &cut    &copy   &paste  &paste   &trans  &trans  &none     &none     &kp PG_DN &none     &none   &trans
                         &trans       &trans       &trans       &trans        &trans  &trans  &trans    &none     &none     &none
             >;
-            sensor-bindings = <&inc_dec_kp PG_DN PG_UP &inc_dec_kp RIGHT LEFT>;
+            sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
         };
 
         numeric_layer {
