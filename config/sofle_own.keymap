@@ -420,7 +420,7 @@
             sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
         };
 
-        movement_layer {
+        down_up_layer {
             display-name = "down_up";
 // ------------------------------------------------------------------------------------------------------------
 // |      |      |      |       |       |      |                |      |      |       |      |       |       |
