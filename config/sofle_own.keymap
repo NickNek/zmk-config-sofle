@@ -250,8 +250,7 @@
             wait-ms = <WAIT_MS>;
             tap-ms = <TAP_MS>;
             bindings
-                = <&macro_tap     &kp UP>
-                , <&macro_tap     &kp UP>
+                = <&macro_wait_time 50> //avoid pressing the direction key too early and thus accidentally cancelling and triggering the initial key
                 , <&macro_tap     &kp UP>
                 , <&macro_tap     &kp UP>
                 , <&macro_tap     &kp UP>
@@ -268,8 +267,7 @@
             wait-ms = <WAIT_MS>;
             tap-ms = <TAP_MS>;
             bindings
-                = <&macro_tap     &kp DOWN>
-                , <&macro_tap     &kp DOWN>
+                = <&macro_wait_time 50>
                 , <&macro_tap     &kp DOWN>
                 , <&macro_tap     &kp DOWN>
                 , <&macro_tap     &kp DOWN>
