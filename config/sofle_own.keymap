@@ -375,7 +375,7 @@
         inc_dec_down_up: inc_dec_down_up {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
-            bindings = <&down_pgdown>, <&up_pgup>;
+            bindings = <&down10>, <&up10>;
         };   
     };
 };
