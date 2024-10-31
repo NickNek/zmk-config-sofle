@@ -339,18 +339,18 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp UP>, <&kp PG_UP>;
-            mods = <(MOD_LCTL|MOD_RCTL)>;
+            mods = <(MOD_RGUI)>;
         };
         down_pgdown: down_pgdown {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp DOWN>, <&kp PG_DN>;
-            mods = <(MOD_LCTL|MOD_RCTL)>;
+            mods = <(MOD_RGUI)>;
         };
         inc_dec_up_down: inc_dec_up_down {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
-            bindings = <&down_pgdown>, <&up_pgup>;
+            bindings = <&up_pgup>, <&down_pgdown>;
         };
     };
 };
@@ -389,7 +389,7 @@
 &kp ESC   &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                            &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &fslh_bslh
 &kp TAB   &kp Q  &kp W    &kp F    &kp P     &kp B                             &kp J  &kp L     &kp U     &kp Y    &qmark_excl &sqt_dqt
 &kp CAPS  &kp A  &kp R    &kp S    &kp T     &kp G                             &kp M  &kp N     &kp E     &kp I    &kp O    &kp BSPC
-&kp LCTRL &kp Z  &kp X    &kp C    &kp D     &kp V       &kp PSCRN  &mt RCTRL PAUSE_BREAK &kp K &kp H &comma_semi &dot_colon &minus_under &kp DEL
+&kp LCTRL &kp Z  &kp X    &kp C    &kp D     &kp V       &mt RGUI PSCRN  &mt RCTRL PAUSE_BREAK &kp K &kp H &comma_semi &dot_colon &minus_under &kp DEL
                  &kp LGUI &kp LALT &mo SYMBOLS &kp LSHFT &kp SPACE  &lt MOVEMENT RET  &kp RSHFT MO_TOG(NUMERIC,NUMPAD) &equal_hash &plus_mult
             >;
             sensor-bindings = <&inc_dec_up_down &inc_dec_kp RIGHT LEFT>;
