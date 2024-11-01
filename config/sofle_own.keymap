@@ -432,7 +432,7 @@
 //                |  t   |   t   |   t   |   t  |   t  |  |   t  |   t  |      |       |      |
             bindings = <
 &trans     &none        &none        &none        &none        &none                         &none     &none     &none     &none     &none   &none
-&trans     &none        &none        &none        &none        &none                         &none     &none     &none     &none     &none   &
+&trans     &none        &none        &none        &none        &none                         &none     &none     &none     &none     &none   &none
 &trans     &kp LGUI     &kp LALT     &kp LCTRL    &kp LSHFT    &none                         &kp HOME  &kp LEFT  &kp UP    &kp RIGHT &kp END &trans
 &trans     &undo_redo   &cut         &copy        &paste       &paste        &trans  &trans  &none     &none     &kp DOWN  &none     &kp INS &trans
                         &trans       &trans       &trans       &mo MOVEMENT2 &trans  &trans  &trans    &none     &none     &none
