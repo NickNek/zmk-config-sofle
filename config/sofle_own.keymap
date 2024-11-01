@@ -499,14 +499,14 @@
 // -------------------------------------------------------------------------------------------------------------------------
 // |    t   |    ø    |     €   |    $    |         |         |               |      |  F10 |  F11  |  F12 |       |       |
 // |    t   |    @    |     °   |    ´    |     `   |    ^    |               |      |  F7  |  F8   |  F9  |       |       |
-// |    t   |    %    |     ä   |    ö    |     ü   |    ß    |               |      |  F4  |  F5   |  F6  |       |       |
-// |    t   |    ‰    |     ×   |    &    |     |   |    ~    |   t  | |   t  |      |  F1  |  F2   |  F3  |       |       |
+// |    t   |    %    |     ä   |    ö    |     ü   |    ß    |               |      |  F4  |  F5   |  F6  |R-CTRL |       |
+// |    t   |    ‰    |     ×   |    &    |     |   |    ~    |   t  | |   t  |      |  F1  |  F2   |  F3  |ALT-GR |       |
 //                    |     t   |    t    |     t   |    t    |   t  | |   t  |   t  |   t  |       |      |
             bindings = <
-&trans   &avg      &euro    &kp DLLR &none     &none                                 &none   &kp F10  &kp F11   &kp F12  &none  &trans
-&trans   &kp AT    &deg     &tick    &kp GRAVE &kp CARET                             &none   &kp F7   &kp F8    &kp F9   &none  &trans
-&trans   &kp PRCNT &ae_AE   &oe_OE   &ue_UE    &ss                                   &none   &kp F4   &kp F5    &kp F6   &none  &trans
-&trans   &prmll    &mult    &kp AMPS &kp PIPE  &kp TILDE &kp C_PLAY_PAUSE &kp C_MUTE &none   &kp F1   &kp F2    &kp F3   &none  &trans
+&trans   &avg      &euro    &kp DLLR &none     &none                                 &none   &kp F10  &kp F11   &kp F12  &none     &trans
+&trans   &kp AT    &deg     &tick    &kp GRAVE &kp CARET                             &none   &kp F7   &kp F8    &kp F9   &none     &trans
+&trans   &kp PRCNT &ae_AE   &oe_OE   &ue_UE    &ss                                   &none   &kp F4   &kp F5    &kp F6   &kp RCTRL &trans
+&trans   &prmll    &mult    &kp AMPS &kp PIPE  &kp TILDE &kp C_PLAY_PAUSE &kp C_MUTE &none   &kp F1   &kp F2    &kp F3   &kp RALT  &trans
                    &trans   &trans   &trans    &trans    &trans           &trans     &trans  &trans   &none     &none 
             >;
             sensor-bindings = <&inc_dec_kp C_NEXT C_PREV &inc_dec_kp C_VOL_UP C_VOL_DN>;
