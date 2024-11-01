@@ -280,8 +280,6 @@
     };
 };
 
-#define MO_TOG(layer_mo, layer_tog) &mo_tog layer_mo layer_tog
-
 / {
     behaviors {
         ae_AE: ae_AE {
@@ -404,15 +402,15 @@
 // ------------------------------------------------------------------------------------------------------------
 // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   | //\   |
 // |  TAB  |  Q  |  W  |  F   |  P   |  B   |                   |  J   |  L    |  U    |  Y   |   ?/! | '/"   |
-// | BREAK |  A  |  R  |  S   |  T   |  G   |                   |  M   |  N    |  E    |  I   |   O   | BKSPC |
-// | LCTRL |  Z  |  X  |  C   |  D   |  V   |  CTX   |  | PRINT |  K   |  N    |  ,/;  |  ./: |   -/_ |  DEL  |
+// | LCTRL |  A  |  R  |  S   |  T   |  G   |                   |  M   |  N    |  E    |  I   |   O   | BKSPC |
+// | BREAK |  Z  |  X  |  C   |  D   |  V   |  CTX   |  | PRINT |  K   |  N    |  ,/;  |  ./: |   -/_ |  DEL  |
 //               | WIN | ALT  |SYMBLS| SPACE| LSHFT  |  | RSHFT | RET} | NUMS* |  =/#  |  +/* |
             bindings = <
-&kp ESC   &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                            &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &fslh_bslh
-&kp TAB   &kp Q  &kp W    &kp F    &kp P     &kp B                             &kp J  &kp L     &kp U     &kp Y    &qmark_excl &sqt_dqt
-&kp PAUSE_BREAK &kp A  &kp R    &kp S    &kp T     &kp G                             &kp M  &kp N     &kp E     &kp I    &kp O    &kp BSPC
-&kp LCTRL &kp Z  &kp X    &kp C    &kp D     &kp V       &lt DOWNUP K_CMENU &mt RCTRL PSCRN &kp K &kp H &comma_semi &dot_colon &minus_under &kp DEL
-                 &kp LGUI &kp LALT &mo SYMBOLS &kp SPACE &kp LSHFT  &kp RSHFT &lt MOVEMENT1 RET MO_TOG(NUMERIC,NUMPAD) &equal_hash &plus_mult
+&kp ESC          &kp N1 &kp N2   &kp N3   &kp N4      &kp N5                                       &kp N6            &kp N7                 &kp N8      &kp N9     &kp N0       &fslh_bslh
+&kp TAB          &kp Q  &kp W    &kp F    &kp P       &kp B                                        &kp J             &kp L                  &kp U       &kp Y      &qmark_excl  &sqt_dqt
+&kp LCTRL        &kp A  &kp R    &kp S    &kp T       &kp G                                        &kp M             &kp N                  &kp E       &kp I      &kp O        &kp BSPC
+&kp PAUSE_BREAK  &kp Z  &kp X    &kp C    &kp D       &kp V     &lt DOWNUP K_CMENU &mt RCTRL PSCRN &kp K             &kp H                  &comma_semi &dot_colon &minus_under &kp DEL
+                        &kp LGUI &kp LALT &mo SYMBOLS &kp SPACE &kp LSHFT          &kp RSHFT       &lt MOVEMENT1 RET &mo_tog NUMERIC NUMPAD &equal_hash &plus_mult
             >;
             sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
         };
@@ -444,9 +442,9 @@
 // |   t   | UNDO | CUT  | COPY  | PASTE |PASTE |   t  |  |   t  |      |      |   v   |      |       |   t   |
 //                |  t   |   t   |   t   |   t  |   t  |  |   t  |   t  |   t  |       |      |
             bindings = <
-&trans     &none        &none        &none        &none        &none                    &none     &none     &none     &none     &none   &none
-&trans     &none        &none        &none        &none        &none                    &none     &none     &none     &none     &none   &kp INS
-&trans     &kp LGUI     &kp LALT     &kp LCTRL    &kp LSHFT    &none                    &kp HOME  &kp LEFT  &kp UP    &kp RIGHT &kp END &trans
+&trans     &none        &none        &none        &none        &none                         &none     &none     &none     &none     &none   &none
+&trans     &none        &none        &none        &none        &none                         &none     &none     &none     &none     &none   &kp INS
+&trans     &kp LGUI     &kp LALT     &kp LCTRL    &kp LSHFT    &none                         &kp HOME  &kp LEFT  &kp UP    &kp RIGHT &kp END &trans
 &trans     &undo_redo   &cut         &copy        &paste       &paste        &trans  &trans  &none     &none     &kp DOWN  &none     &none   &trans
                         &trans       &trans       &trans       &mo MOVEMENT2 &trans  &trans  &trans    &none     &none     &none
             >;
