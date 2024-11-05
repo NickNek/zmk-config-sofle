@@ -233,7 +233,39 @@
                 , <&macro_release &kp LCTRL>
                 ;
         };
-        up10: up10 {
+        left8: left8 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_tap     &kp LEFT>
+                , <&macro_tap     &kp LEFT>
+                , <&macro_tap     &kp LEFT>
+                , <&macro_tap     &kp LEFT>
+                , <&macro_tap     &kp LEFT>
+                , <&macro_tap     &kp LEFT>
+                , <&macro_tap     &kp LEFT>
+                , <&macro_tap     &kp LEFT>
+                ;
+        };
+        right8: right8 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_tap     &kp RIGHT>
+                , <&macro_tap     &kp RIGHT>
+                , <&macro_tap     &kp RIGHT>
+                , <&macro_tap     &kp RIGHT>
+                , <&macro_tap     &kp RIGHT>
+                , <&macro_tap     &kp RIGHT>
+                , <&macro_tap     &kp RIGHT>
+                , <&macro_tap     &kp RIGHT>
+                ;
+        };
+        up8: up8 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <WAIT_MS>;
@@ -249,7 +281,7 @@
                 , <&macro_tap     &kp UP>
                 ;
         };
-        down10: down10 {
+        down8: down8 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <WAIT_MS>;
@@ -415,7 +447,7 @@
         inc_dec_down_up: inc_dec_down_up {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
-            bindings = <&down10>, <&up10>;
+            bindings = <&down8>, <&up8>;
         };   
     };
 };
@@ -501,13 +533,13 @@
 // ------------------------------------------------------------------------------------------------------------
 // |   t   |  F1  |  F2  |  F3   |  F4   |  F5  |                |  F6  |  F7  |  F8   |  F9  |  F10  |  F11  |
 // |   t   |   t  |   t  |   t   |   t   |  t   |                |      |      |       |      |   t   |  F12  |
-// |   t   |   t  |   t  |   t   |   t   |      |                | HOME |   <- |  PGUP |  ->  |  END  |   t   |
+// |   t   |   t  |   t  |   t   |   t   |      |                | HOME | 8*<- |  PGUP | 8*-> |  END  |   t   |
 // |   t   |   t  |   t  |   t   |   t   |  t   |   t  |  |   t  |      |      |  PGDN |      |  INS  |   t   |
 //                |   t  |   t   |   t   |  t   |   t  |  |   t  |   t  |   t  |       |      |
             bindings = <
 &trans     &kp F1       &kp F2       &kp F3       &kp F4       &kp F5                   &kp F6    &kp F7    &kp F8    &kp F9    &kp F10 &kp F11
 &trans     &trans       &trans       &trans       &trans       &trans                   &none     &none     &none     &none     &trans  &kp F12
-&trans     &trans       &trans       &trans       &trans       &none                    &kp HOME  &kp LEFT  &kp PG_UP &kp RIGHT &kp END &trans
+&trans     &trans       &trans       &trans       &trans       &none                    &kp HOME  &left8    &kp PG_UP &right8   &kp END &trans
 &trans     &trans       &trans       &trans       &trans       &trans   &trans  &trans  &none     &none     &kp PG_DN &none     &kp INS &trans
                         &trans       &trans       &trans       &trans   &trans  &trans  &trans    &none     &none     &none
             >;
