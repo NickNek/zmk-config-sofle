@@ -266,6 +266,63 @@
                 , <&macro_tap     &kp DOWN>
                 ;
         };
+        shift_f12: shift_f12 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LSHFT>
+                , <&macro_tap     &kp F12>
+                , <&macro_release &kp LSHFT>
+                ;
+        };
+        ctl_min: ctl_min {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LCTRL>
+                , <&macro_tap     &kp MINUS>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+        ctl_shf_min: ctl_shf_min {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LCTRL>
+                = <&macro_press   &kp LSHFT>
+                , <&macro_tap     &kp MINUS>
+                , <&macro_release &kp LSHFT>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+        ctl_f: ctl_f {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LCTRL>
+                , <&macro_tap     &kp F>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+        ctl_d: ctl_d {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LCTRL>
+                , <&macro_tap     &kp D>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
     };
 };
 
@@ -391,14 +448,14 @@
 // ------------------------------------------------------------------------------------------------------------
 // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   | //\   |
 // |  TAB  |  Q  |  W  |  F   |  P   |  B   |                   |  J   |  L    |  U    |  Y   |   ?/! | '/"   |
-// | LCTRL |  A  |  R  |  S   |  T   |  G   |                   |  M   |  N    |  E    |  I   |   O   | BKSPC |
-// | BREAK |  Z  |  X  |  C   |  D   |  V   |  CTX   |  | PRINT |  K   |  N    |  ,/;  |  ./: |   -/_ |  DEL  |
+// |       |  A  |  R  |  S   |  T   |  G   |                   |  M   |  N    |  E    |  I   |   O   | BKSPC |
+// | LCTRL |  Z  |  X  |  C   |  D   |  V   |  CTX   |  | PRINT |  K   |  N    |  ,/;  |  ./: |   -/_ |  DEL  |
 //               | WIN | ALT  |SYMBLS| SPACE| LSHFT  |  | RSHFT | RET} | NUMS* |  =/#  |  +/* |
             bindings = <
 &kp ESC          &kp N1 &kp N2   &kp N3   &kp N4      &kp N5                                       &kp N6            &kp N7                 &kp N8      &kp N9     &kp N0       &fslh_bslh
 &kp TAB          &kp Q  &kp W    &kp F    &kp P       &kp B                                        &kp J             &kp L                  &kp U       &kp Y      &qmark_excl  &sqt_dqt
-&kp LCTRL        &kp A  &kp R    &kp S    &kp T       &kp G                                        &kp M             &kp N                  &kp E       &kp I      &kp O        &kp BSPC
-&kp PAUSE_BREAK  &kp Z  &kp X    &kp C    &kp D       &kp V     &lt DOWNUP K_CMENU &mt RCTRL PSCRN &kp K             &kp H                  &comma_semi &dot_colon &minus_under &kp DEL
+&none            &kp A  &kp R    &kp S    &kp T       &kp G                                        &kp M             &kp N                  &kp E       &kp I      &kp O        &kp BSPC
+&kp LCTRL        &kp Z  &kp X    &kp C    &kp D       &kp V     &lt DOWNUP K_CMENU &mt RCTRL PSCRN &kp K             &kp H                  &comma_semi &dot_colon &minus_under &kp DEL
                         &kp LGUI &kp LALT &mo SYMBOLS &kp SPACE &kp LSHFT          &kp RSHFT       &lt MOVEMENT1 RET &mo_tog NUMERIC NUMPAD &equal_hash &plus_mult
             >;
             sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
@@ -426,15 +483,15 @@
             display-name = "movement1";
 // ------------------------------------------------------------------------------------------------------------
 // |   t   |  F1  |  F2  |  F3   |  F4   |  F5  |                |  F6  |  F7  |  F8   |  F9  |  F10  |  F11  |
-// |   t   |      |      |       |       |      |                |      |      |       |      |       |       |
+// |   t   |shfF12|  F12 |ctlMin |ctshMin|ctl-F |                |      |      |       |      | BREAK |  F12  |
 // |   t   | WIN  | ALT  | CTRL  | SHIFT |      |                | HOME |   <- |   ^   |  ->  |  END  |   t   |
-// |   t   | UNDO | CUT  | COPY  | PASTE |PASTE |   t  |  |   t  |      |      |   v   |      |  INS  |   t   |
+// |   t   | UNDO | CUT  | COPY  | PASTE |ctl-D |   t  |  |   t  |      |      |   v   |      |  INS  |   t   |
 //                |  t   |   t   |   t   |   t  |   t  |  |   t  |   t  |      |       |      |
             bindings = <
-&trans     &kp F1       &kp F2       &kp F3       &kp F4       &kp F5                        &kp F6    &kp F7    &kp F8    &kp F9    &kp F10 &kp F11
-&trans     &none        &none        &none        &none        &none                         &none     &none     &none     &none     &none   &kp F12
-&trans     &kp LGUI     &kp LALT     &kp LCTRL    &kp LSHFT    &none                         &kp HOME  &kp LEFT  &kp UP    &kp RIGHT &kp END &trans
-&trans     &undo_redo   &cut         &copy        &paste       &paste        &trans  &trans  &none     &none     &kp DOWN  &none     &kp INS &trans
+&trans     &kp F1       &kp F2       &kp F3       &kp F4       &kp F5                        &kp F6    &kp F7    &kp F8    &kp F9    &kp F10         &kp F11
+&trans     &shift_f12   &kp F12      &ctl_min     &ctl_shf_min &ctl_f                        &none     &none     &none     &none     &kp PAUSE_BREAK &kp F12
+&trans     &kp LGUI     &kp LALT     &kp LCTRL    &kp LSHFT    &none                         &kp HOME  &kp LEFT  &kp UP    &kp RIGHT &kp END         &trans
+&trans     &undo_redo   &cut         &copy        &paste       &ctl_d        &trans  &trans  &none     &none     &kp DOWN  &none     &kp INS         &trans
                         &trans       &trans       &trans       &mo MOVEMENT2 &trans  &trans  &trans    &none     &none     &none
             >;
             sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
@@ -444,13 +501,13 @@
             display-name = "movement2";
 // ------------------------------------------------------------------------------------------------------------
 // |   t   |  F1  |  F2  |  F3   |  F4   |  F5  |                |  F6  |  F7  |  F8   |  F9  |  F10  |  F11  |
-// |   t   |      |      |       |       |      |                |      |      |       |      |       |  F12  |
+// |   t   |   t  |   t  |   t   |   t   |  t   |                |      |      |       |      |   t   |  F12  |
 // |   t   |   t  |   t  |   t   |   t   |      |                | HOME |   <- |  PGUP |  ->  |  END  |   t   |
 // |   t   |   t  |   t  |   t   |   t   |  t   |   t  |  |   t  |      |      |  PGDN |      |  INS  |   t   |
 //                |   t  |   t   |   t   |  t   |   t  |  |   t  |   t  |   t  |       |      |
             bindings = <
 &trans     &kp F1       &kp F2       &kp F3       &kp F4       &kp F5                   &kp F6    &kp F7    &kp F8    &kp F9    &kp F10 &kp F11
-&trans     &none        &none        &none        &none        &none                    &none     &none     &none     &none     &none   &kp F12
+&trans     &trans       &trans       &trans       &trans       &trans                   &none     &none     &none     &none     &trans  &kp F12
 &trans     &trans       &trans       &trans       &trans       &none                    &kp HOME  &kp LEFT  &kp PG_UP &kp RIGHT &kp END &trans
 &trans     &trans       &trans       &trans       &trans       &trans   &trans  &trans  &none     &none     &kp PG_DN &none     &kp INS &trans
                         &trans       &trans       &trans       &trans   &trans  &trans  &trans    &none     &none     &none
