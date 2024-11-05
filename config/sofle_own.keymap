@@ -16,9 +16,8 @@
 #define MOVEMENT1 2
 #define MOVEMENT2 3
 #define NUMERIC 4
-#define NUMPAD 5
-#define SYMBOLS 6
-#define SERVICE 7
+#define SYMBOLS 5
+#define SERVICE 6
 
 #define WAIT_MS 10
 #define TAP_MS 10
@@ -452,11 +451,11 @@
 // | LCTRL |  Z  |  X  |  C   |  D   |  V   |  CTX   |  | PRINT |  K   |  N    |  ,/;  |  ./: |   -/_ |  DEL  |
 //               | WIN | ALT  |SYMBLS| SPACE| LSHFT  |  | RSHFT | RET} | NUMS* |  =/#  |  +/* |
             bindings = <
-&kp ESC          &kp N1 &kp N2   &kp N3   &kp N4      &kp N5                                       &kp N6            &kp N7                 &kp N8      &kp N9     &kp N0       &fslh_bslh
-&kp TAB          &kp Q  &kp W    &kp F    &kp P       &kp B                                        &kp J             &kp L                  &kp U       &kp Y      &qmark_excl  &sqt_dqt
-&none            &kp A  &kp R    &kp S    &kp T       &kp G                                        &kp M             &kp N                  &kp E       &kp I      &kp O        &kp BSPC
-&kp LCTRL        &kp Z  &kp X    &kp C    &kp D       &kp V     &lt DOWNUP K_CMENU &mt RCTRL PSCRN &kp K             &kp H                  &comma_semi &dot_colon &minus_under &kp DEL
-                        &kp LGUI &kp LALT &mo SYMBOLS &kp SPACE &kp LSHFT          &kp RSHFT       &lt MOVEMENT1 RET &mo_tog NUMERIC NUMPAD &equal_hash &plus_mult
+&kp ESC          &kp N1 &kp N2   &kp N3   &kp N4      &kp N5                                       &kp N6            &kp N7      &kp N8      &kp N9     &kp N0       &fslh_bslh
+&kp TAB          &kp Q  &kp W    &kp F    &kp P       &kp B                                        &kp J             &kp L       &kp U       &kp Y      &qmark_excl  &sqt_dqt
+&none            &kp A  &kp R    &kp S    &kp T       &kp G                                        &kp M             &kp N       &kp E       &kp I      &kp O        &kp BSPC
+&kp LCTRL        &kp Z  &kp X    &kp C    &kp D       &kp V     &lt DOWNUP K_CMENU &mt RCTRL PSCRN &kp K             &kp H       &comma_semi &dot_colon &minus_under &kp DEL
+                        &kp LGUI &kp LALT &mo SYMBOLS &kp SPACE &kp LSHFT          &kp RSHFT       &lt MOVEMENT1 RET &mo NUMERIC &equal_hash &plus_mult
             >;
             sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
         };
@@ -529,24 +528,6 @@
 &trans   &kp LGUI   &kp LALT &kp LCTRL &kp LSHFT &none                   &none    &kp N4    &kp N5    &kp N6    &kp KP_PLUS     &trans
 &trans   &undo_redo &cut     &copy     &paste    &paste  &trans &trans   &none    &kp N1    &kp N2    &kp N3    &kp MINUS       &trans
                     &trans   &trans     &trans   &trans  &trans &trans   &trans   &trans    &kp KP_N0 &dot_comma
-            >;
-            sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
-        };
-
-        numpad_layer {
-            display-name = "numpad";
-// -------------------------------------------------------------------------------------------------------------------------
-// |    t   |         |         |         |         |         |               |      |      |       |      |   /   |   t   |
-// |    t   |         |         |         |         |         |               |      |   7  |   8   |  9   |   *   |   t   |
-// |    t   |   WIN   |   ALT   |   CTRL  |  SHIFT  |         |               |toBASE|   4  |   5   |  6   |   +   |   t   |
-// |    t   |   UNDO  |   CUT   |   COPY  |  PASTE  |  PASTE  |   t  | |  t   |NUMLCK|   1  |   2   |  3   |   -   |   t   |
-//               t    |    t    |     t   |    t    |    t    |   t  | |  t   |   t  |   t  |   0   |  ./, |
-            bindings = <
-&trans   &none    &none     &none     &none     &none                 &none                  &none     &none     &none     &kp FSLH        &trans
-&trans   &none    &none     &none     &none     &none                 &none                  &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_MULTIPLY &trans
-&trans   &kp LGUI &kp LALT  &kp LCTRL &kp LSHFT &none                 &to BASE               &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_PLUS     &trans
-&trans   &undo_redo  &cut   &copy     &paste    &paste  &trans &trans &kp KP_NUM             &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp MINUS       &trans
-                     &trans &trans    &trans    &trans  &trans &trans &lt MOVEMENT1 KP_ENTER &trans    &kp KP_N0 &dot_comma
             >;
             sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
         };
