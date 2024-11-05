@@ -552,14 +552,14 @@
 // |    t   |         |         |         |         |         |               |      |      |       |      |   /   |   t   |
 // |    t   |         |         |         |         |         |               |      |   7  |   8   |  9   |   *   |   t   |
 // |    t   |   WIN   |   ALT   |   CTRL  |  SHIFT  |         |               |      |   4  |   5   |  6   |   +   |   t   |
-// |    t   |   UNDO  |   CUT   |   COPY  |  PASTE  |  PASTE  |   t  | |  t   |      |   1  |   2   |  3   |   -   |   t   |
+// |    t   |   UNDO  |   CUT   |   COPY  |  PASTE  |  ctl-D  |   t  | |  t   |      |   1  |   2   |  3   |   -   |   t   |
 //               t    |    t    |     t   |    t    |    t    |   t  | |  t   |   t  |   t  |   0   |  ./, |
             bindings = <
 &trans   &none      &none    &none     &none     &none                   &none    &none     &none     &none     &kp FSLH        &trans
 &trans   &none      &none    &none     &none     &none                   &none    &kp N7    &kp N8    &kp N9    &kp KP_MULTIPLY &trans
 &trans   &kp LGUI   &kp LALT &kp LCTRL &kp LSHFT &none                   &none    &kp N4    &kp N5    &kp N6    &kp KP_PLUS     &trans
-&trans   &undo_redo &cut     &copy     &paste    &paste  &trans &trans   &none    &kp N1    &kp N2    &kp N3    &kp MINUS       &trans
-                    &trans   &trans     &trans   &trans  &trans &trans   &trans   &trans    &kp KP_N0 &dot_comma
+&trans   &undo_redo &cut     &copy     &paste    &ctl_d  &trans &trans   &none    &kp N1    &kp N2    &kp N3    &kp MINUS       &trans
+                    &trans   &trans    &trans    &trans  &trans &trans   &trans   &trans    &kp KP_N0 &dot_comma
             >;
             sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
         };
@@ -567,17 +567,17 @@
         symbol_layer {
             display-name = "symbols";
 // -------------------------------------------------------------------------------------------------------------------------
-// |    t   |    ø    |     €   |    $    |         |         |               |      |  F10 |  F11  |  F12 |       |       |
-// |    t   |    @    |     °   |    ´    |     `   |    ^    |               |      |  F7  |  F8   |  F9  |       |       |
-// |    t   |    %    |     ä   |    ö    |     ü   |    ß    |               |      |  F4  |  F5   |  F6  |R-CTRL |       |
-// |    t   |    ‰    |     ×   |    &    |     |   |    ~    |   t  | |   t  |      |  F1  |  F2   |  F3  |ALT-GR |       |
+// |    t   |    ‰    |     %   |    €    |     $   |    ~    |               |      |  F10 |  F11  |  F12 |       |       |
+// |    t   |    @    |     ´   |    `    |    ^    |    |    |               |      |  F7  |  F8   |  F9  |       |       |
+// |    t   |    ß    |     ä   |    ö    |     ü   |    &    |               |   ø  |  F4  |  F5   |  F6  |R-CTRL |       |
+// |    t   |   UNDO  |   CUT   |   COPY  |  PASTE  |  ctl-D  |   t  | |   t  |   ×  |  F1  |  F2   |  F3  |ALT-GR |       |
 //                    |     t   |    t    |     t   |    t    |   t  | |   t  |   t  |   t  |       |      |
             bindings = <
-&trans   &avg      &euro    &kp DLLR &none     &none                                 &none   &kp F10  &kp F11   &kp F12  &none     &trans
-&trans   &kp AT    &deg     &tick    &kp GRAVE &kp CARET                             &none   &kp F7   &kp F8    &kp F9   &none     &trans
-&trans   &kp PRCNT &ae_AE   &oe_OE   &ue_UE    &ss                                   &none   &kp F4   &kp F5    &kp F6   &kp RCTRL &trans
-&trans   &prmll    &mult    &kp AMPS &kp PIPE  &kp TILDE &kp C_PLAY_PAUSE &kp C_MUTE &none   &kp F1   &kp F2    &kp F3   &kp RALT  &trans
-                   &trans   &trans   &trans    &trans    &trans           &trans     &trans  &trans   &none     &none 
+&trans   &prmll     &kp PRCNT &euro     &kp DLLR  &kp TILDE                             &none   &kp F10  &kp F11   &kp F12  &none     &trans
+&trans   &kp AT     &tick     &kp GRAVE &kp CARET &kp PIPE                              &none   &kp F7   &kp F8    &kp F9   &none     &trans
+&trans   &ss &ae_AE &oe_OE    &ue_UE    &kp AMPS                                        &avg    &kp F4   &kp F5    &kp F6   &kp RCTRL &trans
+&trans   &undo_redo &cut      &copy     &paste    &ctl_d    &kp C_PLAY_PAUSE &kp C_MUTE &mult   &kp F1   &kp F2    &kp F3   &kp RALT  &trans
+                    &trans    &trans    &trans    &trans    &trans           &trans     &trans  &trans   &none     &none 
             >;
             sensor-bindings = <&inc_dec_kp C_NEXT C_PREV &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
