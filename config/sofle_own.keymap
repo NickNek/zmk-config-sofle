@@ -326,7 +326,7 @@
             tap-ms = <TAP_MS>;
             bindings
                 = <&macro_press   &kp LCTRL>
-                = <&macro_press   &kp LSHFT>
+                , <&macro_press   &kp LSHFT>
                 , <&macro_tap     &kp MINUS>
                 , <&macro_release &kp LSHFT>
                 , <&macro_release &kp LCTRL>
