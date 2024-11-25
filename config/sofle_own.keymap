@@ -14,10 +14,8 @@
 #define BASE 0
 #define DOWNUP 1
 #define MOVEMENT1 2
-#define MOVEMENT2 3
-#define NUMERIC 4
-#define SYMBOLS 5
-#define SERVICE 6
+#define SYMBOLS 3
+#define SERVICE 4
 
 #define WAIT_MS 10
 #define TAP_MS 10
@@ -233,6 +231,28 @@
                 , <&macro_release &kp LCTRL>
                 ;
         };
+        ctl_home: ctl_home {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LCTRL>
+                , <&macro_tap     &kp HOME>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+        ctl_end: ctl_end {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LCTRL>
+                , <&macro_tap     &kp END>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
         left8: left8 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -295,6 +315,39 @@
                 , <&macro_tap     &kp DOWN>
                 , <&macro_tap     &kp DOWN>
                 , <&macro_tap     &kp DOWN>
+                ;
+        };
+        ctl_f9: ctl_f9 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LCTRL>
+                , <&macro_tap     &kp F9>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+        ctl_f10: ctl_f10 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LCTRL>
+                , <&macro_tap     &kp F10>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+        shift_f11: shift_f11 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LSHFT>
+                , <&macro_tap     &kp F11>
+                , <&macro_release &kp LSHFT>
                 ;
         };
         shift_f12: shift_f12 {
@@ -483,11 +536,11 @@
 // | LCTRL |  Z  |  X  |  C   |  D   |  V   |  CTX   |  | PRINT |  K   |  N    |  ,/;  |  ./: |   -/_ |  DEL  |
 //               | WIN | ALT  |SYMBLS| SPACE| LSHFT  |  | RSHFT | RET} | NUMS* |  =/#  |  +/* |
             bindings = <
-&kp ESC          &kp N1 &kp N2   &kp N3   &kp N4      &kp N5                                       &kp N6            &kp N7      &kp N8      &kp N9     &kp N0       &fslh_bslh
-&kp TAB          &kp Q  &kp W    &kp F    &kp P       &kp B                                        &kp J             &kp L       &kp U       &kp Y      &qmark_excl  &sqt_dqt
-&none            &kp A  &kp R    &kp S    &kp T       &kp G                                        &kp M             &kp N       &kp E       &kp I      &kp O        &kp BSPC
-&kp LCTRL        &kp Z  &kp X    &kp C    &kp D       &kp V     &lt DOWNUP K_CMENU &mt RCTRL PSCRN &kp K             &kp H       &comma_semi &dot_colon &minus_under &kp DEL
-                        &kp LGUI &kp LALT &mo SYMBOLS &kp SPACE &kp LSHFT          &kp RSHFT       &lt MOVEMENT1 RET &mo NUMERIC &equal_hash &plus_mult
+&kp ESC          &kp N1 &kp N2   &kp N3   &kp N4      &kp N5                                                 &kp N6            &kp N7      &kp N8      &kp N9     &kp N0       &fslh_bslh
+&kp TAB          &kp Q  &kp W    &kp F    &kp P       &kp B                                                  &kp J             &kp L       &kp U       &kp Y      &qmark_excl  &sqt_dqt
+&kp RALT         &kp A  &kp R    &kp S    &kp T       &kp G                                                  &kp M             &kp N       &kp E       &kp I      &kp O        &kp BSPC
+&kp LCTRL        &kp Z  &kp X    &kp C    &kp D       &kp V               &lt DOWNUP K_CMENU &mt RCTRL PSCRN &kp K             &kp H       &comma_semi &dot_colon &minus_under &kp DEL
+                        &kp LGUI &kp LALT &mo SYMBOLS &lt MOVEMENT1 SPACE &kp LSHFT          &kp RSHFT       &lt MOVEMENT1 RET &mo SYMBOLS &equal_hash &plus_mult
             >;
             sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
         };
@@ -514,52 +567,16 @@
             display-name = "movement1";
 // ------------------------------------------------------------------------------------------------------------
 // |   t   |  F1  |  F2  |  F3   |  F4   |  F5  |                |  F6  |  F7  |  F8   |  F9  |  F10  |  F11  |
-// |   t   |shfF12|  F12 |ctlMin |ctshMin|ctl-F |                |      |      |       |      | BREAK |  F12  |
-// |   t   | WIN  | ALT  | CTRL  | SHIFT |      |                | HOME |   <- |   ^   |  ->  |  END  |   t   |
-// |   t   | UNDO | CUT  | COPY  | PASTE |ctl-D |   t  |  |   t  |      |      |   v   |      |  INS  |   t   |
-//                |  t   |   t   |   t   |   t  |   t  |  |   t  |   t  |      |       |      |
+// |   t   |shfF11|  F11 |  F10  |ctl-F10|ctl-F9|                |      | PGUP |ctlHome|      | BREAK |  F12  |
+// |   t   |shfF12|  F12 |ctlMin |ctshMin|ctl-F |                | HOME |   <- |   ^   |  ->  |  END  |   t   |
+// |   t   | UNDO | CUT  | COPY  | PASTE |ctl-D |   t  |  |   t  |      | PGDN |   v   |      |  INS  |   t   |
+//                |  t   |   t   |   t   |   t  |   t  |  |   t  |   t  |      |ctlEnd |      |
             bindings = <
 &trans     &kp F1       &kp F2       &kp F3       &kp F4       &kp F5                        &kp F6    &kp F7    &kp F8    &kp F9    &kp F10         &kp F11
-&trans     &shift_f12   &kp F12      &ctl_min     &ctl_shf_min &ctl_f                        &none     &none     &none     &none     &kp PAUSE_BREAK &kp F12
-&trans     &kp LGUI     &kp LALT     &kp LCTRL    &kp LSHFT    &none                         &kp HOME  &kp LEFT  &kp UP    &kp RIGHT &kp END         &trans
-&trans     &undo_redo   &cut         &copy        &paste       &ctl_d        &trans  &trans  &none     &none     &kp DOWN  &none     &kp INS         &trans
-                        &trans       &trans       &trans       &mo MOVEMENT2 &trans  &trans  &trans    &none     &none     &none
-            >;
-            sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
-        };
-
-        movement2_layer {
-            display-name = "movement2";
-// ------------------------------------------------------------------------------------------------------------
-// |   t   |  F1  |  F2  |  F3   |  F4   |  F5  |                |  F6  |  F7  |  F8   |  F9  |  F10  |  F11  |
-// |   t   |   t  |   t  |   t   |   t   |  t   |                |      |      |       |      |   t   |  F12  |
-// |   t   |   t  |   t  |   t   |   t   |      |                | HOME | 8*<- |  PGUP | 8*-> |  END  |   t   |
-// |   t   |   t  |   t  |   t   |   t   |  t   |   t  |  |   t  |      |      |  PGDN |      |  INS  |   t   |
-//                |   t  |   t   |   t   |  t   |   t  |  |   t  |   t  |   t  |       |      |
-            bindings = <
-&trans     &kp F1       &kp F2       &kp F3       &kp F4       &kp F5                   &kp F6    &kp F7    &kp F8    &kp F9    &kp F10 &kp F11
-&trans     &trans       &trans       &trans       &trans       &trans                   &none     &none     &none     &none     &trans  &kp F12
-&trans     &trans       &trans       &trans       &trans       &none                    &kp HOME  &left8    &kp PG_UP &right8   &kp END &trans
-&trans     &trans       &trans       &trans       &trans       &trans   &trans  &trans  &none     &none     &kp PG_DN &none     &kp INS &trans
-                        &trans       &trans       &trans       &trans   &trans  &trans  &trans    &none     &none     &none
-            >;
-            sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
-        };
-
-        numeric_layer {
-            display-name = "numeric";
-// -------------------------------------------------------------------------------------------------------------------------
-// |    t   |         |         |         |         |         |               |      |      |       |      |   /   |   t   |
-// |    t   |         |         |         |         |         |               |      |   7  |   8   |  9   |   *   |   t   |
-// |    t   |   WIN   |   ALT   |   CTRL  |  SHIFT  |         |               |      |   4  |   5   |  6   |   +   |   t   |
-// |    t   |   UNDO  |   CUT   |   COPY  |  PASTE  |  ctl-D  |   t  | |  t   |      |   1  |   2   |  3   |   -   |   t   |
-//               t    |    t    |     t   |    t    |    t    |   t  | |  t   |   t  |   t  |   0   |  ./, |
-            bindings = <
-&trans   &none      &none    &none     &none     &none                   &none    &none     &none     &none     &kp FSLH        &trans
-&trans   &none      &none    &none     &none     &none                   &none    &kp N7    &kp N8    &kp N9    &kp KP_MULTIPLY &trans
-&trans   &kp LGUI   &kp LALT &kp LCTRL &kp LSHFT &none                   &none    &kp N4    &kp N5    &kp N6    &kp KP_PLUS     &trans
-&trans   &undo_redo &cut     &copy     &paste    &ctl_d  &trans &trans   &none    &kp N1    &kp N2    &kp N3    &kp MINUS       &trans
-                    &trans   &trans    &trans    &trans  &trans &trans   &trans   &trans    &kp KP_N0 &dot_comma
+&trans     &shift_f11   &kp F11      &kp F10      &ctl_f10     &ctl_f9                       &none     &kp PG_UP &ctl_home &none     &kp PAUSE_BREAK &kp F12
+&trans     &shift_f12   &kp F12      &ctl_min     &ctl_shf_min &ctl_f                        &kp HOME  &kp LEFT  &kp UP    &kp RIGHT &kp END         &trans
+&trans     &undo_redo   &cut         &copy        &paste       &ctl_d        &trans  &trans  &none     &kp PG_DN &kp DOWN  &none     &kp INS         &trans
+                        &trans       &trans       &none        &trans        &trans  &trans  &trans    &none     &ctl_end  &none
             >;
             sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
         };
@@ -567,17 +584,17 @@
         symbol_layer {
             display-name = "symbols";
 // -------------------------------------------------------------------------------------------------------------------------
-// |    t   |    ‰    |     %   |    €    |     $   |    ~    |               |      |  F10 |  F11  |  F12 |       |       |
-// |    t   |    @    |     ´   |    `    |    ^    |    |    |               |      |  F7  |  F8   |  F9  |       |       |
-// |    t   |    ß    |     ä   |    ö    |     ü   |    &    |               |   ø  |  F4  |  F5   |  F6  |R-CTRL |       |
-// |    t   |   UNDO  |   CUT   |   COPY  |  PASTE  |  ctl-D  |   t  | |   t  |   ×  |  F1  |  F2   |  F3  |ALT-GR |       |
-//                    |     t   |    t    |     t   |    t    |   t  | |   t  |   t  |   t  |       |      |
+// |    t   |    ‰    |     %   |    €    |     $   |    ~    |               |      |      |       |      |   /   |   t   |
+// |    t   |    @    |     ´   |    `    |     ^   |    |    |               |      |   7  |   8   |  9   |   *   |   t   |
+// |    t   |    ß    |     ä   |    ö    |     ü   |    &    |               |      |   4  |   5   |  6   |   +   |   t   |
+// |    t   |         |     ×   |    ø    |         |         |   t  | |   t  |      |   1  |   2   |  3   |   -   |   t   |
+//                    |     t   |    t    |     t   |    t    |   t  | |   t  |   t  |   t  |   0   |  ./, |
             bindings = <
-&trans   &prmll     &kp PRCNT &euro     &kp DLLR  &kp TILDE                             &none   &kp F10  &kp F11   &kp F12  &none     &trans
-&trans   &kp AT     &tick     &kp GRAVE &kp CARET &kp PIPE                              &none   &kp F7   &kp F8    &kp F9   &none     &trans
-&trans   &ss &ae_AE &oe_OE    &ue_UE    &kp AMPS                                        &avg    &kp F4   &kp F5    &kp F6   &kp RCTRL &trans
-&trans   &undo_redo &cut      &copy     &paste    &ctl_d    &kp C_PLAY_PAUSE &kp C_MUTE &mult   &kp F1   &kp F2    &kp F3   &kp RALT  &trans
-                    &trans    &trans    &trans    &trans    &trans           &trans     &trans  &trans   &none     &none 
+&trans   &prmll       &kp PRCNT &euro     &kp DLLR  &kp TILDE                             &none   &none     &none     &none     &kp KP_SLASH    &trans
+&trans   &kp AT       &tick     &kp GRAVE &kp CARET &kp PIPE                              &none   &kp N7    &kp N8    &kp N9    &kp KP_MULTIPLY &trans
+&trans   &ss          &ae_AE    &oe_OE    &ue_UE    &kp AMPS                              &none   &kp N4    &kp N5    &kp N6    &kp KP_PLUS     &trans
+&trans   &none        &mult     &avg      &none     &none     &kp C_PLAY_PAUSE &kp C_MUTE &none   &kp N1    &kp N2    &kp N3    &kp KP_MINUS    &trans
+                      &trans    &trans    &trans    &trans    &trans           &trans     &trans  &trans    &kp N0    &dot_comma
             >;
             sensor-bindings = <&inc_dec_kp C_NEXT C_PREV &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
