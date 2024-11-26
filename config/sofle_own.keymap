@@ -512,10 +512,10 @@
         combo1 { key-positions = <8 9>; bindings = <&kp GT>;    timeout-ms = <50>; layers = <0>;};  // >
         combo2 { key-positions = <19 20>; bindings = <&kp LBKT>;  timeout-ms = <50>; layers = <0>;};  // [
         combo3 { key-positions = <20 21>; bindings = <&kp RBKT>;  timeout-ms = <50>; layers = <0>;};  // (
-        combo4 { key-positions = <31 32>; bindings = <&kp LPAR>;  timeout-ms = <50>; layers = <0>;};  // ]
-        combo5 { key-positions = <32 33>; bindings = <&kp RPAR>;  timeout-ms = <50>; layers = <0>;};  // )
-        combo6 { key-positions = <45 46>; bindings = <&kp LBRC>;  timeout-ms = <50>; layers = <0>;};  // {
-        combo7 { key-positions = <46 47>; bindings = <&kp RBRC>;  timeout-ms = <50>; layers = <0>;};  // }
+        combo6 { key-positions = <45 46>; bindings = <&kp LPAR>;  timeout-ms = <50>; layers = <0>;};  // {
+        combo7 { key-positions = <46 47>; bindings = <&kp RPAR>;  timeout-ms = <50>; layers = <0>;};  // }
+        combo6 { key-positions = <57 58>; bindings = <&kp LBRC>;  timeout-ms = <50>; layers = <0>;};  // {
+        combo7 { key-positions = <58 59>; bindings = <&kp RBRC>;  timeout-ms = <50>; layers = <0>;};  // }
 
         combo8 { key-positions = <54 55>; bindings = <&caps_word>;  timeout-ms = <50>; layers = <0>;};  // both shift kezs for caps word
 
@@ -532,7 +532,7 @@
 // ------------------------------------------------------------------------------------------------------------
 // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   | //\   |
 // |  TAB  |  Q  |  W  |  F   |  P   |  B   |                   |  J   |  L    |  U    |  Y   |   ?/! | '/"   |
-// |       |  A  |  R  |  S   |  T   |  G   |                   |  M   |  N    |  E    |  I   |   O   | BKSPC |
+// |  RALT |  A  |  R  |  S   |  T   |  G   |                   |  M   |  N    |  E    |  I   |   O   | BKSPC |
 // | LCTRL |  Z  |  X  |  C   |  D   |  V   |  CTX   |  | PRINT |  K   |  N    |  ,/;  |  ./: |   -/_ |  DEL  |
 //               | WIN | ALT  |SYMBLS| SPACE| LSHFT  |  | RSHFT | RET} | NUMS* |  =/#  |  +/* |
             bindings = <
