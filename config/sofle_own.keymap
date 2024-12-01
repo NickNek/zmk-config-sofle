@@ -407,6 +407,25 @@
                 , <&macro_release &kp LCTRL>
                 ;
         };
+        nacht: nacht {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                , <&macro_tap     &kp LGUI>
+                , <&macro_tap     &kp N>
+                , <&macro_tap     &kp A>
+                , <&macro_tap     &kp C>
+                , <&macro_tap     &kp H>
+                , <&macro_tap     &kp T>
+                , <&macro_tap     &kp M>
+                , <&macro_tap     &kp O>
+                , <&macro_tap     &kp D>
+                , <&macro_tap     &kp U>
+                , <&macro_tap     &kp S>
+                ;
+        };
     };
 };
 
@@ -572,11 +591,11 @@
 // |   t   | UNDO | CUT  | COPY  | PASTE |ctl-D |   t  |  |   t  |      | PGDN |   v   |      |  INS  |   t   |
 //                |  t   |   t   |   t   |   t  |   t  |  |   t  |   t  |      |ctlEnd |      |
             bindings = <
-&trans     &kp F1       &kp F2       &kp F3       &kp F4       &kp F5                        &kp F6    &kp F7    &kp F8    &kp F9    &kp F10         &kp F11
-&trans     &shift_f11   &kp F11      &kp F10      &ctl_f10     &ctl_f9                       &none     &kp PG_UP &ctl_home &none     &kp PAUSE_BREAK &kp F12
-&trans     &shift_f12   &kp F12      &ctl_min     &ctl_shf_min &ctl_f                        &kp HOME  &kp LEFT  &kp UP    &kp RIGHT &kp END         &trans
-&trans     &undo_redo   &cut         &copy        &paste       &ctl_d        &trans  &trans  &none     &kp PG_DN &kp DOWN  &none     &kp INS         &trans
-                        &trans       &trans       &none        &trans        &trans  &trans  &trans    &none     &ctl_end  &none
+&trans     &kp F1       &kp F2       &kp F3       &kp F4       &kp F5                        &kp F6      &kp F7    &kp F8    &kp F9    &kp F10         &kp F11
+&trans     &shift_f11   &kp F11      &kp F10      &ctl_f10     &ctl_f9                       &none       &kp PG_UP &ctl_home &none     &kp PAUSE_BREAK &kp F12
+&trans     &shift_f12   &kp F12      &ctl_min     &ctl_shf_min &ctl_f                        &kp HOME    &kp LEFT  &kp UP    &kp RIGHT &kp END         &trans
+&trans     &undo_redo   &cut         &copy        &paste       &ctl_d        &trans  &trans  &kp K_CMENU &kp PG_DN &kp DOWN  &none     &kp INS         &trans
+                        &trans       &trans       &none        &trans        &trans  &trans  &trans      &none     &ctl_end  &nacht
             >;
             sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
         };
