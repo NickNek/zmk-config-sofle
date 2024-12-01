@@ -413,7 +413,7 @@
             wait-ms = <WAIT_MS>;
             tap-ms = <TAP_MS>;
             bindings
-                , <&macro_tap     &kp LGUI>
+                = <&macro_tap     &kp LGUI>
                 , <&macro_tap     &kp N>
                 , <&macro_tap     &kp A>
                 , <&macro_tap     &kp C>
