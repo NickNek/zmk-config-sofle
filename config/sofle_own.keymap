@@ -553,15 +553,15 @@
 // ------------------------------------------------------------------------------------------------------------
 // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   | //\   |
 // |  TAB  |  Q  |  W  |  F   |  P   |  B   |                   |  J   |  L    |  U    |  Y   |   ?/! | '/"   |
-// |ALT GR |  A  |  R  |  S   |  T   |  G   |                   |  M   |  N    |  E    |  I   |   O   | BKSPC |
+// |  RALT |  A  |  R  |  S   |  T   |  G   |                   |  M   |  N    |  E    |  I   |   O   | BKSPC |
 // | LCTRL |  Z  |  X  |  C   |  D   |  V   |  CTX   |  | PRINT |  K   |  N    |  ,/;  |  ./: |   -/_ |  DEL  |
 //               | WIN | ALT  |SYMBLS| SPACE| LSHFT  |  | RSHFT | RET} | NUMS* |  =/#  |  +/* |
             bindings = <
-&kp ESC          &kp N1 &kp N2   &kp N3   &kp N4      &kp N5                                            &kp N6            &kp N7      &kp N8      &kp N9     &kp N0       &fslh_bslh
-&kp TAB          &kp Q  &kp W    &kp F    &kp P       &kp B                                             &kp J             &kp L       &kp U       &kp Y      &qmark_excl  &sqt_dqt
-&kp KC_RALT      &kp A  &kp R    &kp S    &kp T       &kp G                                             &kp M             &kp N       &kp E       &kp I      &kp O        &kp BSPC
-&kp LCTRL        &kp Z  &kp X    &kp C    &kp D       &kp V               &lt DOWNUP F9 &mt RCTRL PSCRN &kp K             &kp H       &comma_semi &dot_colon &minus_under &kp DEL
-                        &kp LGUI &kp LALT &mo SYMBOLS &lt MOVEMENT SPACE  &kp LSHFT     &kp RSHFT       &lt MOVEMENT RET  &mo SYMBOLS &equal_hash &plus_mult
+&kp ESC   &kp N1 &kp N2   &kp N3   &kp N4      &kp N5                                            &kp N6            &kp N7      &kp N8      &kp N9     &kp N0       &fslh_bslh
+&kp TAB   &kp Q  &kp W    &kp F    &kp P       &kp B                                             &kp J             &kp L       &kp U       &kp Y      &qmark_excl  &sqt_dqt
+&kp RALT  &kp A  &kp R    &kp S    &kp T       &kp G                                             &kp M             &kp N       &kp E       &kp I      &kp O        &kp BSPC
+&kp LCTRL &kp Z  &kp X    &kp C    &kp D       &kp V               &lt DOWNUP F9 &mt RCTRL PSCRN &kp K             &kp H       &comma_semi &dot_colon &minus_under &kp DEL
+                 &kp LGUI &kp LALT &mo SYMBOLS &lt MOVEMENT SPACE  &kp LSHFT     &kp RSHFT       &lt MOVEMENT RET  &mo SYMBOLS &equal_hash &plus_mult
             >;
             sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
         };
