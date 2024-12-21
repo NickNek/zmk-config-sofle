@@ -385,6 +385,19 @@
                 , <&macro_release &kp LCTRL>
                 ;
         };
+        ctl_shf_l: ctl_shf_l {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LCTRL>
+                , <&macro_press   &kp LSHFT>
+                , <&macro_tap     &kp L>
+                , <&macro_release &kp LSHFT>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
         ctl_f: ctl_f {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -404,6 +417,30 @@
             bindings
                 = <&macro_press   &kp LCTRL>
                 , <&macro_tap     &kp D>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+        ctl_k_c: ctl_k_c {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LCTRL>
+                , <&macro_tap     &kp K>
+                , <&macro_tap     &kp C>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+        ctl_k_u: ctl_k_u {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LCTRL>
+                , <&macro_tap     &kp K>
+                , <&macro_tap     &kp U>
                 , <&macro_release &kp LCTRL>
                 ;
         };
@@ -518,6 +555,12 @@
             bindings = <&undo>, <&redo>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+        cmt_uncmt: cmt_uncmt {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&ctl_k_c>, <&ctl_k_u>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
         inc_dec_down_up: inc_dec_down_up {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
@@ -579,7 +622,7 @@
 &none      &none        &none        &none        &none        &none                         &none     &none     &none    &none     &none   &none
 &trans     &none        &none        &none        &none        &none                         &none     &none     &none    &none     &none   &none
 &none      &none        &none        &none        &none        &none    &trans     &trans    &none     &none     &none    &none     &none   &none
-                        &trans       &trans       &none        &none    &trans     &trans     &trans    &none     &none    &none
+                        &trans       &trans       &none        &none    &trans     &trans    &trans    &none     &none    &none
             >;
             sensor-bindings = <&inc_dec_down_up &inc_dec_kp RIGHT LEFT>;
         };
@@ -588,13 +631,13 @@
             display-name = "hot keys and moving";
 // ------------------------------------------------------------------------------------------------------------
 // |   t   |  F1  |  F2  |  F3   |  F4   |  F5  |                |  F6  |  F7  |  F8   |  F9  |  F10  |  F11  |
-// | Tabs  |shfF11|  F11 |  F10  |ctl-F10|ctl-F9|                |      | PGUP |ctlHome|      | BREAK |  F12  |
+// | Tabs  |shfF11|  F11 |  F10  |ctl-F10|ctl-F9|                | cmmt | PGUP |ctlHome|      | BREAK |  F12  |
 // |   t   |shfF12|  F12 |ctlMin |ctshMin|ctl-F |                | HOME |   <- |   ^   |  ->  |  END  |   t   |
-// |   t   | UNDO | CUT  | COPY  | PASTE |ctl-D |   t  |  |   t  |      | PGDN |   v   |      |  INS  |   t   |
+// |   t   | UNDO | CUT  | COPY  | PASTE |ctl-D |   t  |  |   t  | CTX  | PGDN |   v   |      |  INS  |   t   |
 //                |  t   |   t   |   t   |   t  |   t  |  |   t  |   t  |      |ctlEnd |      |
             bindings = <
-&trans     &kp F1       &kp F2       &kp F3       &kp F4       &kp F5                               &kp F6      &kp F7    &kp F8    &kp F9    &kp F10         &kp F11
-&tabs      &shift_f11   &kp F11      &kp F10      &ctl_f10     &ctl_f9                              &none       &kp PG_UP &ctl_home &none     &kp PAUSE_BREAK &kp F12
+&ctl_shf_l &kp F1       &kp F2       &kp F3       &kp F4       &kp F5                               &kp F6      &kp F7    &kp F8    &kp F9    &kp F10         &kp F11
+&tabs      &shift_f11   &kp F11      &kp F10      &ctl_f10     &ctl_f9                              &cmt_uncmt  &kp PG_UP &ctl_home &none     &kp PAUSE_BREAK &kp F12
 &trans     &shift_f12   &kp F12      &ctl_min     &ctl_shf_min &ctl_f                               &kp HOME    &kp LEFT  &kp UP    &kp RIGHT &kp END         &trans
 &trans     &undo_redo   &cut         &copy        &paste       &ctl_d  &kp C_PLAY_PAUSE &kp C_MUTE  &kp K_CMENU &kp PG_DN &kp DOWN  &none     &kp INS         &trans
                         &trans       &trans       &none        &trans  &trans           &trans      &trans      &none     &ctl_end  &nacht
@@ -608,13 +651,13 @@
 // |    t   |    ‰    |     %   |    €    |     $   |    ~    |               |      |      |       |      |   /   |   t   |
 // |    t   |    @    |     ´   |    `    |     ^   |    |    |               |      |   7  |   8   |  9   |   *   |   t   |
 // |    t   |    ß    |     ä   |    ö    |     ü   |    &    |               |      |   4  |   5   |  6   |   +   |   t   |
-// |    t   |         |     ×   |    ø    |         |         |   t  | |   t  |      |   1  |   2   |  3   |   -   |   t   |
+// |    t   |    °    |     ×   |    ø    |         |         |   t  | |   t  |      |   1  |   2   |  3   |   -   |   t   |
 //                    |     t   |    t    |     t   |    t    |   t  | |   t  |   t  |   t  |   0   |  ./, |
             bindings = <
-&trans   &prmll       &kp PRCNT &euro     &kp DLLR  &kp TILDE                             &none   &none     &none     &none     &kp KP_SLASH    &trans
+&trans   &prmll       &kp PRCNT &euro     &kp DLLR  &kp TILDE                             &none   &none     &none     &none     &kp KP_DIVIDE   &trans
 &trans   &kp AT       &tick     &kp GRAVE &kp CARET &kp PIPE                              &none   &kp N7    &kp N8    &kp N9    &kp KP_MULTIPLY &trans
 &trans   &ss          &ae_AE    &oe_OE    &ue_UE    &kp AMPS                              &none   &kp N4    &kp N5    &kp N6    &kp KP_PLUS     &trans
-&trans   &none        &mult     &avg      &none     &none     &kp C_PLAY_PAUSE &kp C_MUTE &none   &kp N1    &kp N2    &kp N3    &kp KP_MINUS    &trans
+&trans   &deg         &mult     &avg      &none     &none     &kp C_PLAY_PAUSE &kp C_MUTE &none   &kp N1    &kp N2    &kp N3    &kp KP_MINUS    &trans
                       &trans    &trans    &trans    &trans    &trans           &trans     &trans  &trans    &kp N0    &dot_comma
             >;
             sensor-bindings = <&inc_dec_kp C_FF C_RW &inc_dec_kp C_VOL_UP C_VOL_DN>;
