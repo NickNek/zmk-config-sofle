@@ -4,12 +4,15 @@
  * SPDX-License-Identifier: MIT
  */
 
-
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/ext_power.h>
+
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
+#include <dt-bindings/zmk/pointing.h> 
 
 #define BASE 0
 #define DOWNUP 1
@@ -631,15 +634,15 @@
             display-name = "hot keys and moving";
 // ------------------------------------------------------------------------------------------------------------
 // |   t   |  F1  |  F2  |  F3   |  F4   |  F5  |                |  F6  |  F7  |  F8   |  F9  |  F10  |  F11  |
-// | Tabs  |shfF11|  F11 |  F10  |ctl-F10|ctl-F9|                | cmmt | PGUP |ctlHome|      | BREAK |  F12  |
+// | Tabs  |shfF11|  F11 |  F10  |ctl-F10|ctl-F9|                | cmmt | PGUP |ctlHome| MS ^ | BREAK |  F12  |
 // |   t   |shfF12|  F12 |ctlMin |ctshMin|ctl-F |                | HOME |   <- |   ^   |  ->  |  END  |   t   |
-// |   t   | UNDO | CUT  | COPY  | PASTE |ctl-D |   t  |  |   t  | CTX  | PGDN |   v   |      |  INS  |   t   |
+// |   t   | UNDO | CUT  | COPY  | PASTE |ctl-D |   t  |  |   t  | CTX  | PGDN |   v   | MS v |  INS  |   t   |
 //                |  t   |   t   |   t   |   t  |   t  |  |   t  |   t  |      |ctlEnd |      |
             bindings = <
-&ctl_shf_l &kp F1       &kp F2       &kp F3       &kp F4       &kp F5                               &kp F6      &kp F7    &kp F8    &kp F9    &kp F10         &kp F11
-&tabs      &shift_f11   &kp F11      &kp F10      &ctl_f10     &ctl_f9                              &cmt_uncmt  &kp PG_UP &ctl_home &none     &kp PAUSE_BREAK &kp F12
-&trans     &shift_f12   &kp F12      &ctl_min     &ctl_shf_min &ctl_f                               &kp HOME    &kp LEFT  &kp UP    &kp RIGHT &kp END         &trans
-&trans     &undo_redo   &cut         &copy        &paste       &ctl_d  &kp C_PLAY_PAUSE &kp C_MUTE  &kp K_CMENU &kp PG_DN &kp DOWN  &none     &kp INS         &trans
+&ctl_shf_l &kp F1       &kp F2       &kp F3       &kp F4       &kp F5                               &kp F6      &kp F7    &kp F8    &kp F9         &kp F10         &kp F11
+&tabs      &shift_f11   &kp F11      &kp F10      &ctl_f10     &ctl_f9                              &cmt_uncmt  &kp PG_UP &ctl_home &mmv MOVE_UP   &kp PAUSE_BREAK &kp F12
+&trans     &shift_f12   &kp F12      &ctl_min     &ctl_shf_min &ctl_f                               &kp HOME    &kp LEFT  &kp UP    &kp RIGHT      &kp END         &trans
+&trans     &undo_redo   &cut         &copy        &paste       &ctl_d  &kp C_PLAY_PAUSE &kp C_MUTE  &kp K_CMENU &kp PG_DN &kp DOWN  &mmv MOVE_DOWN &kp INS         &trans
                         &trans       &trans       &none        &trans  &trans           &trans      &trans      &none     &ctl_end  &nacht
             >;
             sensor-bindings = <&inc_dec_kp C_FF C_RW &inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -651,13 +654,13 @@
 // |    t   |    ‰    |     %   |    €    |     $   |    ~    |               |      |      |       |      |   /   |   t   |
 // |    t   |    @    |     ´   |    `    |     ^   |    |    |               |      |   7  |   8   |  9   |   *   |   t   |
 // |    t   |    ß    |     ä   |    ö    |     ü   |    &    |               |      |   4  |   5   |  6   |   +   |   t   |
-// |    t   |    °    |     ×   |    ø    |         |         |   t  | |   t  |      |   1  |   2   |  3   |   -   |   t   |
+// |    t   |    °    |     ×   |    ø    |         | Rollen  |   t  | |   t  |      |   1  |   2   |  3   |   -   |   t   |
 //                    |     t   |    t    |     t   |    t    |   t  | |   t  |   t  |   t  |   0   |  ./, |
             bindings = <
 &trans   &prmll       &kp PRCNT &euro     &kp DLLR  &kp TILDE                             &none   &none     &none     &none     &kp KP_DIVIDE   &trans
 &trans   &kp AT       &tick     &kp GRAVE &kp CARET &kp PIPE                              &none   &kp N7    &kp N8    &kp N9    &kp KP_MULTIPLY &trans
 &trans   &ss          &ae_AE    &oe_OE    &ue_UE    &kp AMPS                              &none   &kp N4    &kp N5    &kp N6    &kp KP_PLUS     &trans
-&trans   &deg         &mult     &avg      &none     &none     &kp C_PLAY_PAUSE &kp C_MUTE &none   &kp N1    &kp N2    &kp N3    &kp KP_MINUS    &trans
+&trans   &deg         &mult     &avg      &none     &kp SLCK  &kp C_PLAY_PAUSE &kp C_MUTE &none   &kp N1    &kp N2    &kp N3    &kp KP_MINUS    &trans
                       &trans    &trans    &trans    &trans    &trans           &trans     &trans  &trans    &kp N0    &dot_comma
             >;
             sensor-bindings = <&inc_dec_kp C_FF C_RW &inc_dec_kp C_VOL_UP C_VOL_DN>;
