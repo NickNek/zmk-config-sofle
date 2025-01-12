@@ -642,7 +642,7 @@
 &ctl_shf_l &kp F1       &kp F2       &kp F3       &kp F4       &kp F5                               &kp F6      &kp F7    &kp F8    &kp F9         &kp F10         &kp F11
 &tabs      &shift_f11   &kp F11      &kp F10      &ctl_f10     &ctl_f9                              &cmt_uncmt  &kp PG_UP &ctl_home &mmv MOVE_Y(-100) &kp PAUSE_BREAK &kp F12
 &trans     &shift_f12   &kp F12      &ctl_min     &ctl_shf_min &ctl_f                               &kp HOME    &kp LEFT  &kp UP    &kp RIGHT      &kp END         &trans
-&trans     &undo_redo   &cut         &copy        &paste       &ctl_d  &kp C_PLAY_PAUSE &kp C_MUTE  &kp K_CMENU &kp PG_DN &kp DOWN  &&mmv MOVE_UP  &kp INS         &trans
+&trans     &undo_redo   &cut         &copy        &paste       &ctl_d  &kp C_PLAY_PAUSE &kp C_MUTE  &kp K_CMENU &kp PG_DN &kp DOWN  &mmv MOVE_UP  &kp INS         &trans
                         &trans       &trans       &none        &trans  &trans           &trans      &trans      &none     &ctl_end  &nacht
             >;
             sensor-bindings = <&inc_dec_kp C_FF C_RW &inc_dec_kp C_VOL_UP C_VOL_DN>;
