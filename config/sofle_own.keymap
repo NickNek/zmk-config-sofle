@@ -135,6 +135,17 @@
                 , <&macro_release &kp LALT>
                 ;
         };
+        para: para {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LALT>
+                , <&macro_tap     &kp KP_N0 &kp KP_N2 &kp KP_N2 &kp KP_N3>
+                , <&macro_release &kp LALT>
+                ;
+        };
         mult: mult {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -691,14 +702,14 @@
 // |    t   |    ‰    |     %   |    €    |     $   |    ~    |               |      |      |       |      |   /   |   t   |
 // |    t   |    @    |     ´   |    `    |     ^   |    |    |               | SLCK |   7  |   8   |  9   |   *   |   t   |
 // |    t   |    ß    |     ä   |    ö    |     ü   |    &    |               |      |   4  |   5   |  6   |   +   |   t   |
-// |    t   |    °    |     ×   |    ø    |         |         |   t  | |   t  | cmmt |   1  |   2   |  3   |   -   |   t   |
+// |    t   |    §    |     ×   |    ø    |     °   |         |   t  | |   t  | cmmt |   1  |   2   |  3   |   -   |   t   |
 //                    |     t   |    t    |     t   |    t    |   t  | |   t  |   t  |   t  |   0   |  ./, |
             bindings = <
 &trans   &prmll       &kp PRCNT &euro     &kp DLLR  &kp TILDE                             &none      &none     &none     &none     &kp KP_DIVIDE   &trans
-&trans   &kp AT       &tick     &kp GRAVE &kp CARET &kp PIPE                              &kp SLCK   &kp N7    &kp N8    &kp N9    &kp KP_MULTIPLY &trans
-&trans   &ss          &ae_AE    &oe_OE    &ue_UE    &kp AMPS                              &none      &kp N4    &kp N5    &kp N6    &kp KP_PLUS     &trans
-&trans   &deg         &mult     &avg      &none     &none     &kp C_PLAY_PAUSE &kp C_MUTE &cmt_uncmt &kp N1    &kp N2    &kp N3    &kp KP_MINUS    &trans
-                      &trans    &trans    &trans    &trans    &trans           &trans     &trans     &trans    &kp N0    &dot_comma
+&trans   &kp AT       &tick     &kp GRAVE &kp CARET &kp PIPE                              &kp SLCK   &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_MULTIPLY &trans
+&trans   &ss          &ae_AE    &oe_OE    &ue_UE    &kp AMPS                              &none      &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_PLUS     &trans
+&trans   &para        &mult     &avg      &deg      &none     &kp C_PLAY_PAUSE &kp C_MUTE &cmt_uncmt &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_MINUS    &trans
+                      &trans    &trans    &trans    &trans    &trans           &trans     &trans     &trans    &kp KP_N0 &dot_comma
             >;
             sensor-bindings = <&inc_dec_kp C_FF C_RW &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
