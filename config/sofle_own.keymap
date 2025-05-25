@@ -502,7 +502,7 @@
             wait-ms = <WAIT_MS>;
             tap-ms = <TAP_MS>;
             bindings
-                = <&kp TAB &kp TAB &kp TAB &kp TAB &kp TAB &kp TAB>
+                = <&kp TAB &kp TAB &kp TAB &kp TAB &kp TAB>
                 ;
         };
     };
