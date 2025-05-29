@@ -522,7 +522,7 @@
             wait-ms = <WAIT_MS>;
             tap-ms = <TAP_MS>;
             bindings
-                = <&kp sqt &kp SPACE>
+                = <&kp SQT &kp SPACE>
                 ;
         };
         dqt_space: dqt_space {
@@ -531,7 +531,7 @@
             wait-ms = <WAIT_MS>;
             tap-ms = <TAP_MS>;
             bindings
-                = <&kp dqt &kp SPACE>
+                = <&kp DQT &kp SPACE>
                 ;
         };
         tilde: tilde {
