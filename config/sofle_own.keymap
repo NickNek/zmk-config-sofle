@@ -516,6 +516,33 @@
                 = <&kp TAB &kp TAB &kp TAB &kp TAB &kp TAB>
                 ;
         };
+        sqt_space: sqt_space {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&kp sqt &kp SPACE>
+                ;
+        };
+        dqt_space: dqt_space {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&kp dqt &kp SPACE>
+                ;
+        };
+        tilde: tilde {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&kp TILDE &kp SPACE>
+                ;
+        };
     };
 };
 
@@ -573,7 +600,7 @@
         sqt_dqt: sqt_dqt {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp SQT>, <&kp DQT>;
+            bindings = <&sqt_space>, <&dqt_space>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
         minus_under: minus_under {
@@ -698,17 +725,18 @@
 
         symbol_layer {
             display-name = "symbols and numbers";
+// (d) ... dead key in ENG-US-INTERNATIONAL
 // -------------------------------------------------------------------------------------------------------------------------
 // |    t   |    ‰    |     %   |    €    |     $   |    ~    |               |      |      |       |      |   /   |   t   |
-// |    t   |    @    |     ´   |    `    |     ^   |    |    |               | SLCK |   7  |   8   |  9   |   *   |   t   |
-// |    t   |    ß    |     ä   |    ö    |     ü   |    &    |               |      |   4  |   5   |  6   |   +   |   t   |
-// |    t   |    §    |     ×   |    ø    |     °   |         |   t  | |   t  | cmmt |   1  |   2   |  3   |   -   |   t   |
+// |    t   |    @    |     '(d)|    `(d) |     ^(d)|    ×    |               | SLCK |   7  |   8   |  9   |   *   |   t   |
+// |    t   |    ß    |     ä   |    ö    |     ü   |    ø    |               |      |   4  |   5   |  6   |   +   |   t   |
+// |    t   |    §    |     |   |    &    |     "(d)|    °    |   t  | |   t  | cmmt |   1  |   2   |  3   |   -   |   t   |
 //                    |     t   |    t    |     t   |    t    |   t  | |   t  |   t  |   t  |   0   |  ./, |
             bindings = <
-&trans   &prmll       &kp PRCNT &euro     &kp DLLR  &kp TILDE                             &none      &none     &none     &none     &kp KP_DIVIDE   &trans
-&trans   &kp AT       &tick     &kp GRAVE &kp CARET &kp PIPE                              &kp SLCK   &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_MULTIPLY &trans
-&trans   &ss          &ae_AE    &oe_OE    &ue_UE    &kp AMPS                              &none      &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_PLUS     &trans
-&trans   &para        &mult     &avg      &deg      &none     &kp C_PLAY_PAUSE &kp C_MUTE &cmt_uncmt &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_MINUS    &trans
+&trans   &prmll       &kp PRCNT &euro     &kp DLLR  &tilde                                &none      &none     &none     &none     &kp KP_DIVIDE   &trans
+&trans   &kp AT       &kp sqt   &kp GRAVE &kp CARET &mult                                 &kp SLCK   &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_MULTIPLY &trans
+&trans   &ss          &ae_AE    &oe_OE    &ue_UE    &avg                                  &none      &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_PLUS     &trans
+&trans   &para        &kp PIPE  &kp AMPS  &kp dqt   &deg      &kp C_PLAY_PAUSE &kp C_MUTE &cmt_uncmt &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_MINUS    &trans
                       &trans    &trans    &trans    &trans    &trans           &trans     &trans     &trans    &kp KP_N0 &dot_comma
             >;
             sensor-bindings = <&inc_dec_kp C_FF C_RW &inc_dec_kp C_VOL_UP C_VOL_DN>;
