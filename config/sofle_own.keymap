@@ -677,7 +677,7 @@
 };
     
 &lt {
-    tapping-term-ms = <140>; // 200 is the default
+    tapping-term-ms = <170>; // 200 is the default
 };
 
 / {
