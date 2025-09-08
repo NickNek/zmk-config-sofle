@@ -482,17 +482,6 @@
                 , <&macro_release &kp LCTRL>
                 ;
         };
-        ctl_min: ctl_min {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <WAIT_MS>;
-            tap-ms = <TAP_MS>;
-            bindings
-                = <&macro_press   &kp LCTRL>
-                , <&macro_tap     &kp MINUS>
-                , <&macro_release &kp LCTRL>
-                ;
-        };
         ctl_und: ctl_und {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
