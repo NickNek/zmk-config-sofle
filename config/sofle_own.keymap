@@ -223,6 +223,17 @@
                 , <&macro_release &kp LCTRL>
                 ;
         };
+        paste_hist: paste_hist {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LGUI>
+                , <&macro_tap     &kp V>
+                , <&macro_release &kp LGUI>
+                ;
+        };
         undo: undo {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -471,6 +482,62 @@
                 , <&macro_release &kp LCTRL>
                 ;
         };
+        ctl_min: ctl_min {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LCTRL>
+                , <&macro_tap     &kp MINUS>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+        ctl_und: ctl_und {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LCTRL>
+                , <&macro_tap     &kp UNDER>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+        ctl_b: ctl_b {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LCTRL>
+                , <&macro_tap     &kp B>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+        ctl_i: ctl_i {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LCTRL>
+                , <&macro_tap     &kp I>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+        ctl_k_k: ctl_k_k {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LCTRL>
+                , <&macro_tap     &kp K>
+                , <&macro_tap     &kp K>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
         ctl_k_c: ctl_k_c {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -505,6 +572,18 @@
                 , <&kp LGUI>
                 , <&macro_wait_time WAIT_MS>
                 , <&kp N &kp A &kp C &kp H &kp T &kp M &kp O &kp D &kp U &kp S>
+                ;
+        };
+        night: night {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_wait_time 300>
+                , <&kp LGUI>
+                , <&macro_wait_time WAIT_MS>
+                , <&kp N &kp I &kp G &kp H &kp T>
                 ;
         };
         tabs: tabs {
@@ -548,6 +627,18 @@
 
 / {
     behaviors {
+        power_paste: power_paste {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&paste>, <&paste_hist>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        nacht_night: nacht_night {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&nacht>, <&night>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
         ae_AE: ae_AE {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
@@ -716,13 +807,13 @@
 // | Tabs  |shfF11|  F11 |  F10  |ctl-F10|ctl-F9|                |  F9  | PGUP |   ^   |ctlHome|  MS ^ |  F12  |
 // |   t   |shfF12|  F12 |ctlMin |ctshMin|ctl-F |                | HOME |ctl <-|   <-  |  ->   |ctl -> |  END  |
 // |   t   | UNDO | CUT  | COPY  | PASTE |ctl-D |   t  |  |   t  |csaF10| PGDN |   v   |ctlEnd |  MS v |  INS  |
-//                |  t   |   t   |   t   |   t  |   t  |  |   t  |   t  |      | BREAK |       |
+//                |  t   |   t   |   t   |   t  |   t  |  |   t  |   t  |      | BREAK | Nacht |
             bindings = <
 &ctl_shf_l &kp F1       &kp F2       &kp F3       &kp F4       &kp F5                               &kp F6   &kp F7    &kp F8    &kp F9     &kp F10        &kp F11
 &tabs      &shift_f11   &kp F11      &kp F10      &ctl_f10     &ctl_f9                              &kp F9   &kp PG_UP &kp UP    &ctl_home  &mmv MOVE_UP   &kp F12
 &trans     &shift_f12   &kp F12      &ctl_min     &ctl_shf_min &ctl_f                               &kp HOME &ctl_left &kp LEFT  &kp RIGHT  &ctl_right     &kp END
-&trans     &undo_redo   &cut         &copy        &paste       &ctl_d  &kp C_PLAY_PAUSE &kp C_MUTE  &csa_f10 &kp PG_DN &kp DOWN  &ctl_end   &mmv MOVE_DOWN &kp INS
-                        &trans       &trans       &none        &trans  &trans           &trans      &trans   &none     &kp PAUSE_BREAK  &nacht
+&trans     &undo_redo   &cut         &copy        &power_paste &ctl_d  &kp C_PLAY_PAUSE &kp C_MUTE  &csa_f10 &kp PG_DN &kp DOWN  &ctl_end   &mmv MOVE_DOWN &kp INS
+                        &trans       &trans       &none        &trans  &trans           &trans      &trans   &none     &kp PAUSE_BREAK  &nacht_night
             >;
             sensor-bindings = <&inc_dec_kp C_FF C_RW &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
@@ -731,15 +822,15 @@
             display-name = "symbols and numbers";
 // (d) ... dead key in ENG-US-INTERNATIONAL
 // -------------------------------------------------------------------------------------------------------------------------
-// |    t   |    ‰    |     %   |    €    |     $   |    ~    |               |      |      |       |      |   /   |   t   |
+// |    t   |    ‰    |     %   |    €    |     $   |    ~    |               |strike|under | bold  |italic|   /   |   t   |
 // |    t   |    @    |     '(d)|    `(d) |     ^(d)|    ×    |               | SLCK |   7  |   8   |  9   |   *   |   t   |
-// |    t   |    ß    |     ä   |    ö    |     ü   |    ø    |               |      |   4  |   5   |  6   |   +   |   t   |
+// |    t   |    ß    |     ä   |    ö    |     ü   |    ø    |               |bookm.|   4  |   5   |  6   |   +   |   t   |
 // |    t   |    §    |     |   |    &    |     "(d)|    °    |   t  | |   t  | cmmt |   1  |   2   |  3   |   -   |   t   |
 //                    |     t   |    t    |     t   |    t    |   t  | |   t  |   t  |   t  |   0   |  ./, |
             bindings = <
-&trans   &prmll       &kp PRCNT &euro     &kp DLLR  &tilde                                &none      &none     &none     &none     &kp KP_DIVIDE   &trans
+&trans   &prmll       &kp PRCNT &euro     &kp DLLR  &tilde                                &ctl_min   &ctl_und  &ctl_b    &ctl_i    &kp KP_DIVIDE   &trans
 &trans   &kp AT       &kp SQT   &kp GRAVE &kp CARET &mult                                 &kp SLCK   &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_MULTIPLY &trans
-&trans   &ss          &ae_AE    &oe_OE    &ue_UE    &avg                                  &none      &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_PLUS     &trans
+&trans   &ss          &ae_AE    &oe_OE    &ue_UE    &avg                                  &ctl_k_k   &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_PLUS     &trans
 &trans   &para        &kp PIPE  &kp AMPS  &kp DQT   &deg      &kp C_PLAY_PAUSE &kp C_MUTE &cmt_uncmt &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_MINUS    &trans
                       &trans    &trans    &trans    &trans    &trans           &trans     &trans     &trans    &kp KP_N0 &dot_comma
             >;
