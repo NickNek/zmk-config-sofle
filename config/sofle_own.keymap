@@ -621,10 +621,10 @@
             bindings = <&paste>, <&paste_hist>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-        nacht_night: nacht_night {
+        night_nacht: night_nacht {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&nacht>, <&night>;
+            bindings = <&night>, <&nacht>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
         ae_AE: ae_AE {
@@ -801,7 +801,7 @@
 &tabs      &shift_f11   &kp F11      &kp F10      &ctl_f10     &ctl_f9                              &kp F9   &kp PG_UP &kp UP    &ctl_home  &mmv MOVE_UP   &kp F12
 &trans     &shift_f12   &kp F12      &ctl_min     &ctl_shf_min &ctl_f                               &kp HOME &ctl_left &kp LEFT  &kp RIGHT  &ctl_right     &kp END
 &trans     &undo_redo   &cut         &copy        &power_paste &ctl_d  &kp C_PLAY_PAUSE &kp C_MUTE  &csa_f10 &kp PG_DN &kp DOWN  &ctl_end   &mmv MOVE_DOWN &kp INS
-                        &trans       &trans       &none        &trans  &trans           &trans      &trans   &none     &kp PAUSE_BREAK  &nacht_night
+                        &trans       &trans       &none        &trans  &trans           &trans      &trans   &none     &kp PAUSE_BREAK  &night_nacht
             >;
             sensor-bindings = <&inc_dec_kp C_FF C_RW &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
