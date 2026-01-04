@@ -256,6 +256,28 @@
                 , <&macro_release &kp LCTRL>
                 ;
         };
+        alt_left: alt_left {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LALT>
+                , <&macro_tap     &kp LEFT>
+                , <&macro_release &kp LALT>
+                ;
+        };
+        alt_right: alt_right {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <WAIT_MS>;
+            tap-ms = <TAP_MS>;
+            bindings
+                = <&macro_press   &kp LALT>
+                , <&macro_tap     &kp RIGHT>
+                , <&macro_release &kp LALT>
+                ;
+        };
         ctl_left: ctl_left {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -810,16 +832,16 @@
             display-name = "symbols and numbers";
 // (d) ... dead key in ENG-US-INTERNATIONAL
 // -------------------------------------------------------------------------------------------------------------------------
-// |    t   |    ‰    |     %   |    €    |     $   |    ~    |               |strike|under | bold  |italic|   /   |   t   |
-// |    t   |    @    |     '(d)|    `(d) |     ^(d)|    ×    |               | SLCK |   7  |   8   |  9   |   *   |   t   |
+// | alt <- |    ‰    |     %   |    €    |     $   |    ~    |               |strike|under | bold  |italic|   /   |   t   |
+// | alt -> |    @    |     '(d)|    ^(d) |     `(d)|    ×    |               | SLCK |   7  |   8   |  9   |   *   |   t   |
 // |    t   |    ß    |     ä   |    ö    |     ü   |    ø    |               |bookm.|   4  |   5   |  6   |   +   |   t   |
 // |    t   |    §    |     |   |    &    |     "(d)|    °    |   t  | |   t  | cmmt |   1  |   2   |  3   |   -   |   t   |
 //                    |     t   |    t    |     t   |    t    |   t  | |   t  |   t  |   t  |   0   |  ./, |
             bindings = <
-&trans   &prmll       &kp PRCNT &euro     &kp DLLR  &tilde                                &ctl_min   &ctl_u    &ctl_b    &ctl_i    &kp KP_DIVIDE   &trans
-&trans   &kp AT       &kp SQT   &kp GRAVE &kp CARET &mult                                 &kp SLCK   &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_MULTIPLY &trans
-&trans   &ss          &ae_AE    &oe_OE    &ue_UE    &avg                                  &ctl_k     &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_PLUS     &trans
-&trans   &para        &kp PIPE  &kp AMPS  &kp DQT   &deg      &kp C_PLAY_PAUSE &kp C_MUTE &cmt_uncmt &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_MINUS    &trans
+&alt_left  &prmll       &kp PRCNT &euro     &kp DLLR  &tilde                                &ctl_min   &ctl_u    &ctl_b    &ctl_i    &kp KP_DIVIDE   &trans
+&alt_right &kp AT       &kp SQT   &kp CARET &kp GRAVE &mult                                 &kp SLCK   &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_MULTIPLY &trans
+&trans     &ss          &ae_AE    &oe_OE    &ue_UE    &avg                                  &ctl_k     &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_PLUS     &trans
+&trans     &para        &kp PIPE  &kp AMPS  &kp DQT   &deg      &kp C_PLAY_PAUSE &kp C_MUTE &cmt_uncmt &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_MINUS    &trans
                       &trans    &trans    &trans    &trans    &trans           &trans     &trans     &trans    &kp KP_N0 &dot_comma
             >;
             sensor-bindings = <&inc_dec_kp C_FF C_RW &inc_dec_kp C_VOL_UP C_VOL_DN>;
