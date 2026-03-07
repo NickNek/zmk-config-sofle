@@ -851,7 +851,7 @@
             bindings = <
 &alt_left  &prmll       &kp PRCNT &euro     &kp DLLR  &tilde                                  &ctl_min   &ctl_u    &ctl_b    &ctl_i    &kp KP_DIVIDE   &trans
 &alt_right &kp AT       &kp SQT   &kp CARET &kp GRAVE &mult                                   &kp SLCK   &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_MULTIPLY &trans
-&trans     &ss          &ae_AE    &oe_OE    &ue_UE    &avg                                    &ctl_k     &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_PLUS     &trans
+&trans     &ae_AE       &oe_OE    &ss       &ue_UE    &avg                                    &ctl_k     &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_PLUS     &trans
 &trans     &para        &kp PIPE  &kp AMPS  &kp DQT   &deg    &alt_f4   &ctl_f4    &cmt_uncmt &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_MINUS    &trans
                         &trans    &trans    &trans    &trans  &trans    &trans     &trans     &trans    &kp KP_N0 &dot_comma
             >;
